@@ -1,4 +1,4 @@
-package managementModule;
+package userModule;
 
 public class Management {
 
