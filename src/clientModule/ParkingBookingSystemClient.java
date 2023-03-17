@@ -1,6 +1,6 @@
-package client;
+package clientModule;
 
-public class Client {
+public class ParkingBookingSystemClient {
 
 	public static void main(String[] args) {
 		System.out.println("HELLO WORLD");
