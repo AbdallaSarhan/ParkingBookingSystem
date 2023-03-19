@@ -1,7 +1,7 @@
 package userModule;
 
 public class Student extends Client {
-	private Management managmentTeam;
+	private Management managementTeam;
 	public final int RATE = 5;
 	
 	
@@ -10,10 +10,13 @@ public class Student extends Client {
 	}
 
 	@Override
-	public void register(String name, String email, String password, String licensePlate) {
-	
-		
+	public void register() {
+		this.isRegistered = true;
+
 	}
+	
+	
+	
 	
 
 }

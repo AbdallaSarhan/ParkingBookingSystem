@@ -10,7 +10,11 @@ public class Visitor extends Client {
 	}
 
 	@Override
-	public void register(String name, String email, String password, String licensePlate) {
+	public void register() {
+		
+		this.isRegistered = true;
+		// No verification needed for visitor
+		this.isVerified = true;
 	
 		
 	}

@@ -2,7 +2,7 @@ package userModule;
 
 public class FacultyMember extends Client {
 	
-	private Management managmentTeam;
+	private Management managementTeam;
 	
 	public final int RATE = 8;
 	
@@ -11,8 +11,9 @@ public class FacultyMember extends Client {
 	}
 
 	@Override
-	public void register(String name, String email, String password, String licensePlate) {
-		// TODO Auto-generated method stub
+	public void register() {
+		
+		this.isRegistered = true;
 		
 	}
 	
