@@ -1,5 +1,7 @@
 package clientModule;
 
+import parkingBookingModule.ParkingLot;
+import parkingBookingModule.ParkingSpace;
 import userModule.*;
 
 public class ParkingBookingSystemClient {
@@ -21,11 +23,25 @@ public class ParkingBookingSystemClient {
 		// All fields must not be blank to be verified
 		manager.validateAccount(student1);
 		
-		
 		System.out.println(student1.getVerificationStatus());
-		
 		System.out.println(student1.getRegistrationStatus());
-		System.out.println(superManager);
+		
+		FacultyMember prof1 = new FacultyMember("Mokhtar", "mokhtar@eecs.ca", "Mokhtar128", "IA5CC3");
+		System.out.println(prof1.getVerificationStatus());
+		System.out.println(prof1.getRegistrationStatus());
+		prof1.register();
+		System.out.println(prof1.getRegistrationStatus());
+		manager.validateAccount(prof1);
+		System.out.println(prof1.getVerificationStatus());
+		
+		ParkingLot parking = new ParkingLot();
+		
+		ParkingSpace[] spaces = parking.getParkingSpaces();
+		// parkingLot has an array of 100 null spaces
+		System.out.println(spaces);
+		
+		
+	
 		
 		
 		
