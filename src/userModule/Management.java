@@ -24,8 +24,6 @@ public class Management extends Account {
 				 client.verify();
 				}
 		}
-		
-		
 	}
 	
 	public void addTeamMember(Manager m) {
@@ -33,28 +31,35 @@ public class Management extends Account {
 	}
 	
 	public ArrayList<Management> getTeam(){
-		
 		return team;
 	}
 	
 	public void addParkingLot(ParkingLot parkingLot) {
-		//add to array list of parking lots?
+		bookingSystem.getParkingLots().add(parkingLot);
 	}
 	
 	public void enableParkingLot(ParkingLot parkingLot) {
-		//enable= turn into boolean instead?
+		if (parkingLot != null) {
+			parkingLot.enableLot();
+		}
 	}
 	
 	public void disableParkingLot(ParkingLot parkingLot) {
-		//disable = turn into boolean instead?
+		if (parkingLot != null) {
+			parkingLot.disableLot();
+		}
 	}
 	
 	public void enableParkingSpace(ParkingSpace parkingSpace) {
-		//boolean?
+		if (parkingSpace != null) {
+			parkingSpace.enableSpace();
+		}
 	}
 	
 	public void disableParkingSpace(ParkingSpace parkingSpace) {
-		//boolean
+		if (parkingSpace != null) {
+			parkingSpace.disableSpace();
+		}
 	}
 	
 }

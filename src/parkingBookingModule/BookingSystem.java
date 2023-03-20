@@ -15,6 +15,10 @@ public class BookingSystem {
 		return null;
 	}
 	
+	public ArrayList<ParkingLot> getParkingLots(){
+		return parkinglots;
+	}
+	
 	public Booking bookParkingSpace(Client user, ParkingSpace parkingSpace) {
 	
 		

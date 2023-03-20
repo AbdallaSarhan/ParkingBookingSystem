@@ -51,16 +51,18 @@ public class ParkingSpace {
 		return spaceId;
 	}
 	
-	protected void enable() {
+	public void enableSpace() {
 		// sensor.isvacant = true?
 		// or
 		// isOpen = true?
+		sensor.setVacant(true);
 	}
 	
-	protected void disable() {
+	public void disableSpace() {
 		// sensor.isvacant = false?
 		// or
 		// isOpen = false?
+		sensor.setVacant(false);
 	}
 	
 	

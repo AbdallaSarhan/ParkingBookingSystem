@@ -41,6 +41,7 @@ public class ParkingBookingSystemClient {
 		// parkingLot has an array of 100 null spaces
 		System.out.println(spaces);
 		
+		
 
 	
 		
