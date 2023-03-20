@@ -1,5 +1,6 @@
 package clientModule;
 
+import parkingBookingModule.Booking;
 import parkingBookingModule.ParkingLot;
 import parkingBookingModule.ParkingSpace;
 import userModule.*;
@@ -40,7 +41,7 @@ public class ParkingBookingSystemClient {
 		// parkingLot has an array of 100 null spaces
 		System.out.println(spaces);
 		
-		
+
 	
 		
 		

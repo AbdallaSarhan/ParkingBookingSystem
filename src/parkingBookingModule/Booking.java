@@ -1,17 +1,18 @@
 package parkingBookingModule;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Booking {
 	
 	private int id;
-	private LocalDateTime startDate;
+	private String startDate;
 	private LocalDateTime endDate;
 	private ParkingSpace parkingSpace;
 	private String licensePlate;
 	
 	
-	public Booking(LocalDateTime startDate, LocalDateTime endDate, ParkingSpace parkingSpace, String licensePlate) {
+	public Booking(String startDate, LocalDateTime endDate, ParkingSpace parkingSpace, String licensePlate) {
 	
 		this.startDate = startDate;
 		this.endDate = endDate;
@@ -40,10 +41,12 @@ public class Booking {
 	}
 
 
-	public LocalDateTime getStartDate() {
+	public String getStartDate() {
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
+		   LocalDateTime now = LocalDateTime.now();  
+		   startDate = dtf.format(now);
 		return startDate;
 	}
-
 
 	public int getId() {
 		return id;
