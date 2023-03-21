@@ -42,7 +42,7 @@ public class ParkingBookingSystemClient {
 		System.out.println(prof1.getVerificationStatus());
 		
 		ParkingLot parking = new ParkingLot();
-		ParkingSpace p = new ParkingSpace();
+		ParkingSpace parkspace = new ParkingSpace();
 		
 		
 		ParkingSpace[] spaces = parking.getParkingSpaces();
@@ -55,14 +55,16 @@ public class ParkingBookingSystemClient {
 		m.disableParkingLot(parking);
 		System.out.println(parking.getStatus());
 		
-		p.getAvailability();
-		
 
 		
 
+		
+		Booking booking = new Booking(parkspace, "BHCG167", 4);
 	
+		System.out.println(booking.getStartDate());
 		
 		
+
 		
 
 	}

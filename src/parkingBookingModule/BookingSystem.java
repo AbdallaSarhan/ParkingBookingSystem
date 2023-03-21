@@ -4,6 +4,10 @@ import java.util.ArrayList;
 
 import paymentModule.PaymentMethod;
 import userModule.Client;
+import userModule.FacultyMember;
+import userModule.NonFacultyStaff;
+import userModule.Visitor;
+import userModule.Student;
 
 public class BookingSystem {
 	private ArrayList<ParkingSpace> parkingSpaces;
@@ -39,9 +43,25 @@ public class BookingSystem {
 		
 	}
 	
-	public boolean payForBooking(Client user, Booking bookingInfo) {
+	public int payForBooking(Client user, Booking bookingInfo) {
+		int rate = 0;
+		int price;
+		if(user instanceof Student) {
+			rate = ((Student)user).getRate();
+			}
+		else if(user instanceof FacultyMember) {
+			rate = ((FacultyMember)user).getRate();
+		}
+		else if(user instanceof NonFacultyStaff) {
+			rate = ((NonFacultyStaff)user).getRate();
+		}
+		else if(user instanceof Visitor) {
+			rate = ((Visitor)user).getRate();
+		}
+		price = rate * bookingInfo.getBookedHours();
 		
-		return false;
+		return price;
+		// just returns how much they owe rn
 	}
 	
 	public Booking editBooking(Client user, ParkingSpace parkingSpace) {
