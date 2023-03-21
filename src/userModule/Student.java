@@ -2,7 +2,7 @@ package userModule;
 
 public class Student extends Client {
 	private Management managementTeam;
-	public final int RATE = 5;
+	private final int RATE = 5;
 	
 	
 	public Student(String name, String email, String password, String licensePlate) {
@@ -15,6 +15,10 @@ public class Student extends Client {
 
 	}
 	
+	public int getRate() {
+		
+		return RATE;
+	}
 	
 	
 	

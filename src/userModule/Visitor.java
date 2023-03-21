@@ -2,7 +2,7 @@ package userModule;
 
 public class Visitor extends Client {
 	
-	public final int RATE = 15;
+	private final int RATE = 15;
 
 	
 	public Visitor(String name, String email, String password, String licensePlate) {
@@ -17,6 +17,11 @@ public class Visitor extends Client {
 		this.isVerified = true;
 	
 		
+	}
+	
+	public int getRate() {
+		
+		return RATE;
 	}
 	
 }

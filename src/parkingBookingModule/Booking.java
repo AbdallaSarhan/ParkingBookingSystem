@@ -10,18 +10,23 @@ public class Booking {
 	private LocalDateTime endDate;
 	private ParkingSpace parkingSpace;
 	private String licensePlate;
+	private int bookedHours;
 	
 	
-	public Booking(String startDate, LocalDateTime endDate, ParkingSpace parkingSpace, String licensePlate) {
-	
-		this.startDate = startDate;
-		this.endDate = endDate;
+	public Booking(ParkingSpace parkingSpace, String licensePlate, int bookedHours) {
 		this.parkingSpace = parkingSpace;
 		this.licensePlate = licensePlate;
+		this.bookedHours = bookedHours;
 		
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
+		LocalDateTime now = LocalDateTime.now();  
+		startDate = dtf.format(now);
 	}
 
-
+//	public String bookingInfo() {
+//		return ;
+//	}
+	
 	public String getLicensePlate() {
 		return licensePlate;
 	}
@@ -42,14 +47,19 @@ public class Booking {
 
 
 	public String getStartDate() {
-		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
-		   LocalDateTime now = LocalDateTime.now();  
-		   startDate = dtf.format(now);
 		return startDate;
 	}
 
 	public int getId() {
 		return id;
+	}
+
+	public int getBookedHours() {
+		return bookedHours;
+	}
+
+	public void setBookedHours(int bookedHours) {
+		this.bookedHours = bookedHours;
 	}
 
 }

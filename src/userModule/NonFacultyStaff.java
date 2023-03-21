@@ -3,7 +3,7 @@ package userModule;
 public class NonFacultyStaff extends Client {
 	
 	private Management managementTeam;
-	public final int RATE = 10;
+	private final int RATE = 10;
 	
 	
 	
@@ -15,6 +15,11 @@ public class NonFacultyStaff extends Client {
 	public void register() {
 		this.isRegistered = true;
 		
+	}
+	
+	public int getRate() {
+		
+		return RATE;
 	}
 	
 
