@@ -44,12 +44,13 @@ public class ParkingBookingSystemClient {
 		
 		ParkingLot parking = new ParkingLot();
 
+
 		ParkingSpace parkspace = new ParkingSpace();
 
 		Sensor s = new Sensor();
 		ParkingSpace p = new ParkingSpace(12, parking, s);
 
-		
+
 		
 		ParkingSpace[] spaces = parking.getParkingSpaces();
 		// parkingLot has an array of 100 null spaces
