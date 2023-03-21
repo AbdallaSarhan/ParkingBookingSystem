@@ -4,6 +4,7 @@ import parkingBookingModule.Booking;
 import parkingBookingModule.BookingSystem;
 import parkingBookingModule.ParkingLot;
 import parkingBookingModule.ParkingSpace;
+import parkingBookingModule.Sensor;
 import userModule.*;
 
 public class ParkingBookingSystemClient {
@@ -37,18 +38,26 @@ public class ParkingBookingSystemClient {
 		System.out.println(prof1.getVerificationStatus());
 		
 		ParkingLot parking = new ParkingLot();
-		ParkingSpace p = new ParkingSpace();
+		Sensor s = new Sensor();
+		ParkingSpace p = new ParkingSpace(12, parking, s);
 		
 		
 		ParkingSpace[] spaces = parking.getParkingSpaces();
 		// parkingLot has an array of 100 null spaces
 		System.out.println(spaces);
 		
+		BookingSystem b = new BookingSystem();
 		Management m = new Management("test@gmail.com", "gunther", "123p");
 		m.enableParkingLot(parking);
 		System.out.println(parking.getStatus());
 		m.disableParkingLot(parking);
 		System.out.println(parking.getStatus());
+		m.enableParkingSpace(p);
+		System.out.println(p.getAvailability());
+		m.disableParkingSpace(p);
+		System.out.println(p.getAvailability());
+		m.addParkingLot(parking);
+		System.out.println(b.getParkingLots());
 		
 		
 

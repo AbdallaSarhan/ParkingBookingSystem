@@ -6,21 +6,33 @@ import paymentModule.PaymentMethod;
 import userModule.Client;
 
 public class BookingSystem {
-	private ArrayList<ParkingSpace> parkingSpaces;
-	private ArrayList<ParkingLot> parkinglots;
+	private ArrayList<ParkingSpace> parkingSpaces = new ArrayList<>();
+	private static ArrayList<ParkingLot> parkinglots = new ArrayList<>();
 	private PaymentMethod payment;
 	private Client client;
 	private Booking booking;
 	private Sensor sensor;
 	private ParkingSpace parkingSpace;
-	
+	private static final BookingSystem bookingSystem = new BookingSystem();
 	public ArrayList<ParkingSpace> getAvailableSpaces(){
 		
 		return null;
 	}
 	
+	public static BookingSystem getInstance() {
+		return bookingSystem;
+	}
+	
+	public BookingSystem() {
+		
+	}
+	
+	public void addParkingLot(ParkingLot parkingLot) {
+		this.parkinglots.add(parkingLot);
+	}
+	
 	public ArrayList<ParkingLot> getParkingLots(){
-		return parkinglots;
+		return this.parkinglots;
 	}
 	
 	public Booking bookParkingSpace(Client user, ParkingSpace parkingSpace) {

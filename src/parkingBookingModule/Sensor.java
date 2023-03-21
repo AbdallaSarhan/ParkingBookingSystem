@@ -10,6 +10,10 @@ public class Sensor {
 		
 	}
 	
+	public Sensor() {
+		
+	}
+	
 	public Booking getCarInfo() {
 		return this.booking;
 		
