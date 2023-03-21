@@ -4,14 +4,14 @@ public class ParkingSpace {
 	
 	private int spaceId;
 	private ParkingLot lot;
-	private boolean available;
+	private boolean available = true;
 	private Sensor sensor;
 	private boolean isOpen;
 	private Booking booking;
 
 	
 	
-	public ParkingSpace(int spaceId, ParkingLot lot, boolean available, Sensor sensor) {
+	public ParkingSpace(int spaceId, ParkingLot lot, Sensor sensor) {
 		this.spaceId = spaceId;
 		this.lot = lot;
 		this.available = available;

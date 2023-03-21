@@ -10,7 +10,7 @@ public class Management extends Account {
 	
 	// team is static because it belongs to the class rather than a specfic instance (will be shared by all objects)
 	private static ArrayList<Management> team = new ArrayList<Management>();
-	private BookingSystem bookingSystem;
+	private BookingSystem bookingSystem = BookingSystem.getInstance();
 	
 	public Management(String email, String name, String password) {
 		super(email, name, password);
@@ -35,7 +35,7 @@ public class Management extends Account {
 	}
 	
 	public void addParkingLot(ParkingLot parkingLot) {
-		bookingSystem.getParkingLots().add(parkingLot);
+		bookingSystem.addParkingLot(parkingLot);
 	}
 	
 	public void enableParkingLot(ParkingLot parkingLot) {
