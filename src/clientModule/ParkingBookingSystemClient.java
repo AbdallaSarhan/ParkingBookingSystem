@@ -1,6 +1,7 @@
 package clientModule;
 
 import parkingBookingModule.Booking;
+import parkingBookingModule.BookingSystem;
 import parkingBookingModule.ParkingLot;
 import parkingBookingModule.ParkingSpace;
 import userModule.*;
@@ -36,10 +37,18 @@ public class ParkingBookingSystemClient {
 		System.out.println(prof1.getVerificationStatus());
 		
 		ParkingLot parking = new ParkingLot();
+		ParkingSpace p = new ParkingSpace();
+		
 		
 		ParkingSpace[] spaces = parking.getParkingSpaces();
 		// parkingLot has an array of 100 null spaces
 		System.out.println(spaces);
+		
+		Management m = new Management("test@gmail.com", "gunther", "123p");
+		m.enableParkingLot(parking);
+		System.out.println(parking.getStatus());
+		m.disableParkingLot(parking);
+		System.out.println(parking.getStatus());
 		
 		
 

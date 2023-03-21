@@ -18,6 +18,10 @@ public class ParkingSpace {
 		this.setSensor(sensor);
 	}
 	
+	public ParkingSpace() {
+		
+	}
+	
 	public boolean getAvailability() {
 		
 		return available;
@@ -56,6 +60,7 @@ public class ParkingSpace {
 		// or
 		// isOpen = true?
 		sensor.setVacant(true);
+		available = true;
 	}
 	
 	public void disableSpace() {
@@ -63,6 +68,7 @@ public class ParkingSpace {
 		// or
 		// isOpen = false?
 		sensor.setVacant(false);
+		available = false;
 	}
 	
 	

@@ -13,6 +13,7 @@ public class BookingSystem {
 	private Booking booking;
 	private Sensor sensor;
 	private ParkingSpace parkingSpace;
+	
 	public ArrayList<ParkingSpace> getAvailableSpaces(){
 		
 		return null;
