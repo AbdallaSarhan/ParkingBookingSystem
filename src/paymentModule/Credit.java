@@ -1,9 +1,15 @@
 package paymentModule;
 
-public class Credit extends PaymentMethod{
+import parkingBookingModule.Booking;
+import userModule.Client;
 
-	public Credit(int CardNumber, String nameOnCard, int cvv) {
-		super(CardNumber, nameOnCard, cvv);
+public class Credit implements PaymentMethod{
+
+	@Override
+	public boolean pay(Client client, Booking booking) {
+		// TODO Auto-generated method stub
+		return false;
 	}
+
 
 }

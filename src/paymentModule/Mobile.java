@@ -1,9 +1,16 @@
 package paymentModule;
 
-public class Mobile extends PaymentMethod{
+import parkingBookingModule.Booking;
+import userModule.Client;
 
-	public Mobile(int CardNumber, String nameOnCard, int cvv) {
-		super(CardNumber, nameOnCard, cvv);
+public class Mobile implements PaymentMethod{
+
+	@Override
+	public boolean pay(Client client, Booking booking) {
+		// TODO Auto-generated method stub
+		return false;
 	}
+
+
 
 }

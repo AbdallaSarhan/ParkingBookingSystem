@@ -15,7 +15,7 @@ public class ParkingSpace {
 		this.spaceId = spaceId;
 		this.lot = lot;
 		this.available = available;
-		this.setSensor(sensor);
+		this.sensor = sensor;
 	}
 	
 	public ParkingSpace() {
@@ -29,7 +29,7 @@ public class ParkingSpace {
 	
 	public Booking createBooking() {
 		
-		Booking booking = new Booking(null, null, null, null);
+		Booking booking = new Booking(null, null, 0);
 		// null for now, add specific attributes based on different bookings
 		
 		return booking;
@@ -86,6 +86,14 @@ public class ParkingSpace {
 	public void setSensor(Sensor sensor) {
 		
 		this.sensor = sensor;
+	}
+
+	public boolean isOpen() {
+		return isOpen;
+	}
+
+	public void setOpen(boolean isOpen) {
+		this.isOpen = isOpen;
 	}
 
 }

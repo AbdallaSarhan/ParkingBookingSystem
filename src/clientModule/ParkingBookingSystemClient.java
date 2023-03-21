@@ -11,7 +11,9 @@ public class ParkingBookingSystemClient {
 
 	public static void main(String[] args) {
 		
-		Student student1 = new Student("Abdalla", "abdalla1@my.yorku.ca", "AbdallaSSS128", "AB7C43");
+		// Account constructor takes email then name then password..etc
+		// This is to make sure that you can check name and password correctly when logging in
+		Student student1 = new Student("abdalla1@my.yorku.ca", "Abdalla", "AbdallaSSS128", "AB7C43");
 		SuperManager superManager = SuperManager.getInstance();
 		Manager manager = superManager.createManagementAccount("testManager@gmail.com", "manager1", "manager128");
 	
@@ -25,11 +27,14 @@ public class ParkingBookingSystemClient {
 		student1.register();
 		// All fields must not be blank to be verified
 		manager.validateAccount(student1);
+		System.out.println(student1.isLoggedIn());
+		student1.login("Abdalla", "AbdallaSSS128");
+		System.out.println(student1.isLoggedIn());
 		
 		System.out.println(student1.getVerificationStatus());
 		System.out.println(student1.getRegistrationStatus());
 		
-		FacultyMember prof1 = new FacultyMember("Mokhtar", "mokhtar@eecs.ca", "Mokhtar128", "IA5CC3");
+		FacultyMember prof1 = new FacultyMember("mokhtar@eecs.ca", "Mokhtar", "Mokhtar128", "IA5CC3");
 		System.out.println(prof1.getVerificationStatus());
 		System.out.println(prof1.getRegistrationStatus());
 		prof1.register();
@@ -40,6 +45,7 @@ public class ParkingBookingSystemClient {
 		ParkingLot parking = new ParkingLot();
 		Sensor s = new Sensor();
 		ParkingSpace p = new ParkingSpace(12, parking, s);
+		ParkingSpace parkspace = new ParkingSpace();
 		
 		
 		ParkingSpace[] spaces = parking.getParkingSpaces();
@@ -59,11 +65,16 @@ public class ParkingBookingSystemClient {
 		m.addParkingLot(parking);
 		System.out.println(b.getParkingLots());
 		
+
 		
 
+		
+		Booking booking = new Booking(parkspace, "BHCG167", 4);
 	
+		System.out.println(booking.getStartDate());
 		
 		
+
 		
 
 	}

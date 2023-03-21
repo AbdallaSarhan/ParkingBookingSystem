@@ -1,48 +1,14 @@
 package paymentModule;
 
-public class PaymentMethod {
+import parkingBookingModule.Booking;
+import userModule.Client;
 
-	private int CardNumber;
-	private String nameOnCard;
-	private int cvv;
-	
-	
-	public PaymentMethod(int CardNumber, String nameOnCard, int cvv) {
-		this.CardNumber = CardNumber;
-		this.nameOnCard = nameOnCard;
-		this.cvv = cvv;
-	}
+public interface PaymentMethod {
+
+
+	public boolean pay(Client client, Booking booking);
 
 	
-
-	public int getCardNumber() {
-		return CardNumber;
-	}
-
-
-	public void setCardNumber(int cardNumber) {
-		this.CardNumber = cardNumber;
-	}
-
-
-	public String getNameOnCard() {
-		return nameOnCard;
-	}
-
-
-	public void setNameOnCard(String nameOnCard) {
-		this.nameOnCard = nameOnCard;
-	}
-
-
-	public int getCvv() {
-		return cvv;
-	}
-
-
-	public void setCvv(int cvv) {
-		this.cvv = cvv;
-	}
 	
 	
 	
