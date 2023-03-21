@@ -1,12 +1,18 @@
 package paymentModule;
 
-public class Debit extends PaymentMethod{
+import parkingBookingModule.Booking;
+import userModule.Client;
 
-	public Debit(int CardNumber, String nameOnCard, int cvv) {
-		super(CardNumber, nameOnCard, cvv);
+public class Debit implements PaymentMethod{
+
+	@Override
+	public boolean pay(Client client, Booking booking) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
-	
+
+
 
 	
 }
