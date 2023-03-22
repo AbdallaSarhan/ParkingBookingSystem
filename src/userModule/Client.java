@@ -1,5 +1,7 @@
 package userModule;
 
+import java.util.ArrayList;
+
 import parkingBookingModule.Booking;
 import parkingBookingModule.BookingSystem;
 import parkingBookingModule.ParkingSpace;
@@ -7,7 +9,7 @@ import parkingBookingModule.ParkingSpace;
 public abstract class Client extends Account {
 	
 	private String licensePlate;
-	private BookingSystem bookingSystem;
+	private BookingSystem bookingSystem = BookingSystem.getInstance();
 	private ParkingSpace parkingSpace;
 	protected boolean isRegistered = false;
 	protected boolean isVerified = false;
@@ -21,6 +23,15 @@ public abstract class Client extends Account {
 	public String getName() {
 		
 		return name;
+	}
+	
+	@Override
+	public void login(String name, String password) {
+		
+		if(this.name  == name && this.password == password && this.isVerified == true) {
+			loggedIn = true;
+		}
+		
 	}
 	
 	public String getLicensePlate() {
@@ -61,15 +72,21 @@ public abstract class Client extends Account {
 	}
 	public abstract void register();
 	
+	public ArrayList<ParkingSpace> getAvailableSpaces(){
+		
+		return bookingSystem.getAvailableSpaces();
+		
+	}
 	
-	public ParkingSpace getParkingSpace() {
+	
+	public ParkingSpace getSelectedParkingSpace() {
 		
 		return this.parkingSpace;
 	}
 	
-	public Booking bookParkingSpace(ParkingSpace parkingSpace) {
+	public Booking bookParkingSpace(ParkingSpace parkingSpace, int hours) {
 		
-		return null;
+		return bookingSystem.bookParkingSpace(this, parkingSpace, hours);
 	}
 	
 	public Booking editBooking(ParkingSpace parkingSpace) {

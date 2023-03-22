@@ -68,20 +68,13 @@ public class ParkingBookingSystemClient {
 
 		
 		frame.setVisible(true);
-		
-		
-		
-		
-	}
-	
-	
-	
-	
+			
+	}	
 	
 
 	public static void main(String[] args) {
 		
-		new ParkingBookingSystemClient();
+//		new ParkingBookingSystemClient();
 		
 		// Account constructor takes email then name then password..etc
 		// This is to make sure that you can check name and password correctly when logging in
@@ -114,41 +107,59 @@ public class ParkingBookingSystemClient {
 		manager.validateAccount(prof1);
 		System.out.println(prof1.getVerificationStatus());
 		
-		ParkingLot parking = new ParkingLot();
-
-
-		ParkingSpace parkspace = new ParkingSpace();
-
-		Sensor s = new Sensor();
-		ParkingSpace p = new ParkingSpace(12, parking, s);
-
-
+		manager.addParkingLot();
 		
-		ParkingSpace[] spaces = parking.getParkingSpaces();
-		// parkingLot has an array of 100 null spaces
-		System.out.println(spaces);
+		System.out.println(student1.getAvailableSpaces());
 		
-		BookingSystem b = new BookingSystem();
-		Management m = new Management("test@gmail.com", "gunther", "123p");
-		m.enableParkingLot(parking);
-		System.out.println(parking.getStatus());
-		m.disableParkingLot(parking);
-		System.out.println(parking.getStatus());
-		m.enableParkingSpace(p);
-		System.out.println(p.getAvailability());
-		m.disableParkingSpace(p);
-		System.out.println(p.getAvailability());
-		m.addParkingLot(parking);
-		System.out.println(b.getParkingLots());
 		
-
-		
-
-		
-		Booking booking = new Booking(parkspace, "BHCG167", 4);
 	
-		System.out.println(booking.getStartDate());
+	
+ 
+
+//		ParkingSpace p = new ParkingSpace(parking, s);
+//		ParkingSpace z = new ParkingSpace(parking, s);
+//		ParkingSpace c = new ParkingSpace(parking, s);
+//		ParkingSpace d = new ParkingSpace(parking, s);
+//		ParkingSpace e = new ParkingSpace(parking, s);
+//		ParkingSpace f = new ParkingSpace(parking, s);
+//		ParkingSpace g = new ParkingSpace(parking, s);
+//		
+//		ParkingSpace h = new ParkingSpace(parking, s);
+//		ParkingSpace i = new ParkingSpace(parking, s);
+//	
+
+//		
+//		ParkingSpace[] spaces = parking.getParkingSpaces();
+		// parkingLot has an array of 100 null spaces
+//		System.out.println(spaces);
+//		
+//		BookingSystem b = new BookingSystem();
+//		Management m = new Management("test@gmail.com", "gunther", "123p");
+//		m.enableParkingLot(parking);
+//		System.out.println(parking.getStatus());
+//		m.disableParkingLot(parking);
+//		System.out.println(parking.getStatus());
+//		m.enableParkingSpace(p);
+//		System.out.println(p.getAvailability());
+//		m.disableParkingSpace(p);
+//		System.out.println(p.getAvailability());
+//		m.addParkingLot(parking);
+//		System.out.println(b.getParkingLots());
+//		
+
 		
+
+		
+//		Booking booking = new Booking(parkspace, "BHCG167", 4);
+	
+//		System.out.println(booking.getStartDate());
+		
+//		System.out.println(p.getId());
+//		System.out.println(c.getId());
+//		System.out.println(d.getId());
+//		System.out.println(e.getId());
+//		System.out.println(f.getId());
+//		
 		
 
 		

@@ -7,14 +7,15 @@ import java.util.UUID;
 
 public class ParkingLot {
 	
-//	private ArrayList<ParkingSpace> spaces = new ArrayList<ParkingSpace>(100);
-	private List<ParkingSpace> list = Arrays.asList(new ParkingSpace[100]);
 	private String lotID = UUID.randomUUID().toString();
 	private ParkingSpace[] spaces = new ParkingSpace[100];
 	private boolean isOpen;
 	
 	
 	public ParkingLot() {
+		for(int i=0; i<99; i++) {
+			spaces[i] = new ParkingSpace(this, new Sensor());
+		}
 		
 	}
 	
@@ -26,6 +27,11 @@ public class ParkingLot {
 	public void enableLot() {
 		
 		this.isOpen = true;
+	}
+	
+	public String getLotId() {
+		
+		return lotID;
 	}
 	
 	public void disableLot() {

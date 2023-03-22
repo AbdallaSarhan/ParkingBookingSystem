@@ -34,8 +34,8 @@ public class Management extends Account {
 		return team;
 	}
 	
-	public void addParkingLot(ParkingLot parkingLot) {
-		bookingSystem.addParkingLot(parkingLot);
+	public void addParkingLot() {
+		bookingSystem.addParkingLot(new ParkingLot());
 	}
 	
 	public void enableParkingLot(ParkingLot parkingLot) {

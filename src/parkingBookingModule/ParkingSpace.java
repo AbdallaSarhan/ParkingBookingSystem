@@ -1,38 +1,35 @@
 package parkingBookingModule;
 
+import userModule.Client;
+
 public class ParkingSpace {
-	
-	private int spaceId;
+	// IDref used to reference next parking space id
+	private static long IDref = 0;
+	private long spaceId;
 	private ParkingLot lot;
 	private boolean available = true;
 	private Sensor sensor;
-	private boolean isOpen;
 	private Booking booking;
 
 	
 	
-	public ParkingSpace(int spaceId, ParkingLot lot, Sensor sensor) {
-		this.spaceId = spaceId;
+	public ParkingSpace(ParkingLot lot, Sensor sensor) {
+		this.IDref = IDref +1;
+		this.spaceId = IDref + 1;
 		this.lot = lot;
-		this.available = available;
 		this.sensor = sensor;
 	}
 	
-	public ParkingSpace() {
+	public boolean isAvailable() {
 		
+		return available && sensor.getVacancy();
 	}
 	
-	public boolean getAvailability() {
+	public void book(Client client, int hoursRequested) {
 		
-		return available;
-	}
-	
-	public Booking createBooking() {
 		
-		Booking booking = new Booking(null, null, 0);
-		// null for now, add specific attributes based on different bookings
+		sensor.setVacancy(false);
 		
-		return booking;
 	}
 	
 	public Booking editBooking() {
@@ -47,27 +44,20 @@ public class ParkingSpace {
 	
 	public Booking extendBooking() {
 		// adds time to endDate 
+		// adds hours to hours booked
 		// booking.setenddate() need a setter for end date
 		return booking;
 	}
 	
-	public int getId() {
+	public long getId() {
 		return spaceId;
 	}
 	
 	public void enableSpace() {
-		// sensor.isvacant = true?
-		// or
-		// isOpen = true?
-		sensor.setVacant(true);
 		available = true;
 	}
 	
 	public void disableSpace() {
-		// sensor.isvacant = false?
-		// or
-		// isOpen = false?
-		sensor.setVacant(false);
 		available = false;
 	}
 	
@@ -88,12 +78,8 @@ public class ParkingSpace {
 		this.sensor = sensor;
 	}
 
-	public boolean isOpen() {
-		return isOpen;
-	}
 
-	public void setOpen(boolean isOpen) {
-		this.isOpen = isOpen;
-	}
+
+
 
 }

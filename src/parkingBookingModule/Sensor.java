@@ -2,36 +2,27 @@ package parkingBookingModule;
 
 public class Sensor {
 
-	private boolean isVacant;
-	private Booking booking;
+	private boolean isVacant=true;
+	private String carLicensePlate;
 	
+	
+	public void setCarLicensePlate(String licensePlate) {
+		
+		this.carLicensePlate = licensePlate;
+	}
+	
+	public String getCarInfo() {
+		
+		return this.carLicensePlate;
+	}
 
-	public void setCarInfo(Booking booking) {
-		
-	}
 	
-	public Sensor() {
-		
-	}
-	
-	public Booking getCarInfo() {
-		return this.booking;
-		
-	}
-	
-//	public boolean isVacant() {
-//		return isVacant;
-//	}
-//	
 	public boolean getVacancy() {
 		return isVacant;
 	}
 	
-//	public void setVacancy(boolean isVacant) {
-//		this.setVacant(isVacant);
-//	}
 
-	public void setVacant(boolean isVacant) {
+	public void setVacancy(boolean isVacant) {
 		this.isVacant = isVacant;
 	}
 }
