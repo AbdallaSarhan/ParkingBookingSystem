@@ -1,5 +1,14 @@
 package clientModule;
 
+import java.awt.BorderLayout;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
 import parkingBookingModule.Booking;
 import parkingBookingModule.BookingSystem;
 import parkingBookingModule.ParkingLot;
@@ -8,8 +17,71 @@ import parkingBookingModule.Sensor;
 import userModule.*;
 
 public class ParkingBookingSystemClient {
+	
+	
+	public ParkingBookingSystemClient() {
+		// Default
+		JFrame frame = new JFrame();
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setSize(500,500);
+		
+		// text area
+		JTextArea welcomeText = new JTextArea("Yorku Parking Booking system");
+		welcomeText.setEditable(false);
+		// text field and labels
+		JLabel name_label = new JLabel("name");
+		JTextField name_input = new JTextField(15);
+		JLabel password_label = new JLabel("password");
+		JTextField password_input = new JTextField(15);
+		
+		
+		// Button
+		JButton login_button = new JButton("Login");
+		JButton register_button = new JButton("Register");
+		
+		
+		
+		
+		
+		// Panel
+		JPanel authentication_buttons_panel = new JPanel();
+		authentication_buttons_panel.add(login_button);
+		authentication_buttons_panel.add(register_button);
+		
+		JPanel name_data_panel = new JPanel();
+		name_data_panel.add(name_label);
+		name_data_panel.add(name_input);
+	
+		JPanel password_data_panel = new JPanel();
+		password_data_panel.add(password_label);
+		password_data_panel.add(password_input);
+		
+		
+	
+		 
+		// add component to frame
+		frame.getContentPane().add(BorderLayout.NORTH, welcomeText);
+		frame.getContentPane().add(BorderLayout.SOUTH, authentication_buttons_panel);
+		frame.getContentPane().add(BorderLayout.CENTER, password_data_panel);
+		frame.getContentPane().add(BorderLayout.CENTER, name_data_panel);
+	
+
+		
+		frame.setVisible(true);
+		
+		
+		
+		
+	}
+	
+	
+	
+	
+	
 
 	public static void main(String[] args) {
+		
+		new ParkingBookingSystemClient();
 		
 		// Account constructor takes email then name then password..etc
 		// This is to make sure that you can check name and password correctly when logging in
