@@ -35,6 +35,7 @@ public class BookingSystem {
 	}
 	
 	public void searchAvailableSpaces() {
+		// this will likely be changed to observer and so will not be needed
 		
 		for(int i=0; i<parkinglots.size(); i++) {
 			ParkingLot currentlot = parkinglots.get(i);

@@ -1,13 +1,7 @@
 package clientModule;
 
-import java.awt.BorderLayout;
-
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
+import java.awt.*;
+import javax.swing.*;
 
 import parkingBookingModule.Booking;
 import parkingBookingModule.BookingSystem;
@@ -19,20 +13,27 @@ import userModule.*;
 public class ParkingBookingSystemClient {
 	
 	
+
+	  
+	
 	public ParkingBookingSystemClient() {
-		// Default
-		JFrame frame = new JFrame();
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(500,500);
+		 // Default
+//		JFrame frame = new JFrame();
+//		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		frame.setSize(500,500);
 		
 		// text area
-		JTextArea welcomeText = new JTextArea("Yorku Parking Booking system");
+		JTextArea welcomeText = new JTextArea("Yorku Parking Booking system", 1, 5);
+		welcomeText.setFont(new Font("Serif", Font.BOLD, 30));
+		welcomeText.setBackground(Color.RED);
 		welcomeText.setEditable(false);
 		// text field and labels
 		JLabel name_label = new JLabel("name");
-		JTextField name_input = new JTextField(15);
+		JTextField name_input = new JTextField(1);
+		name_input.setBounds(5, 5, 20, 1);
+		//name_input.setBorder(BorderFactory.createEmptyBorder());
 		JLabel password_label = new JLabel("password");
-		JTextField password_input = new JTextField(15);
+		JTextField password_input = new JTextField(1);
 		
 		
 		// Button
@@ -48,33 +49,132 @@ public class ParkingBookingSystemClient {
 		authentication_buttons_panel.add(login_button);
 		authentication_buttons_panel.add(register_button);
 		
-		JPanel name_data_panel = new JPanel();
-		name_data_panel.add(name_label);
-		name_data_panel.add(name_input);
-	
-		JPanel password_data_panel = new JPanel();
-		password_data_panel.add(password_label);
-		password_data_panel.add(password_input);
+		
+		JPanel name_panel = new JPanel();
+		name_panel.add(name_label);
+		name_panel.add(name_input);
+		
+		JPanel pass_panel = new JPanel();
+		pass_panel.add(password_label);
+		pass_panel.add(password_input);
+		
+		JPanel view_panel = new JPanel();
+		view_panel.add(name_panel);
+		view_panel.add(pass_panel);
 		
 		
-	
+		view_panel.setLayout(new BoxLayout(view_panel, BoxLayout.Y_AXIS));
 		 
 		// add component to frame
-		frame.getContentPane().add(BorderLayout.NORTH, welcomeText);
-		frame.getContentPane().add(BorderLayout.SOUTH, authentication_buttons_panel);
-		frame.getContentPane().add(BorderLayout.CENTER, password_data_panel);
-		frame.getContentPane().add(BorderLayout.CENTER, name_data_panel);
+//		frame.getContentPane().add(BorderLayout.NORTH, welcomeText);
+//		frame.getContentPane().add(BorderLayout.SOUTH, authentication_buttons_panel);
+//		frame.getContentPane().add(BorderLayout.CENTER, view_panel);
+//		frame.getContentPane().add(BorderLayout.CENTER, name_data_panel);
 	
 
 		
-		frame.setVisible(true);
+//		frame.setVisible(true);
+		JFrame frame = new JFrame();
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setBounds(300, 90, 900, 600);
+		frame.setTitle("Yorku Parking Booking System");
+//		setTitle("Registration Form");
+
+//        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        frame.setResizable(false);
+ 
+        Container c = frame.getContentPane();
+        c.setLayout(null);
+ 
+        JLabel title = new JLabel("York Parking Booking");
+        title.setFont(new Font("Arial", Font.BOLD, 25));
+        title.setSize(300, 30);
+        title.setLocation(300, 30);
+        title.setBackground(Color.red);
+        c.add(title);
+ 
+        JLabel name = new JLabel("Name");
+        name.setFont(new Font("Arial", Font.PLAIN, 20));
+        name.setSize(100, 20);
+        name.setLocation(100, 100);
+        c.add(name);
+ 
+        JTextField tname = new JTextField();
+        tname.setFont(new Font("Arial", Font.PLAIN, 15));
+        tname.setSize(190, 20);
+        tname.setLocation(200, 100);
+        c.add(tname);
+ 
+        JLabel pass = new JLabel("Password");
+        pass.setFont(new Font("Arial", Font.PLAIN, 20));
+        pass.setSize(100, 20);
+        pass.setLocation(100, 150);
+        c.add(pass);
+ 
+        JTextField tpass = new JTextField();
+        tpass.setFont(new Font("Arial", Font.PLAIN, 15));
+        tpass.setSize(190, 20);
+        tpass.setLocation(200, 150);
+        c.add(tpass);
+ 
+        JLabel client = new JLabel("Client");
+        client.setFont(new Font("Arial", Font.PLAIN, 20));
+        client.setSize(100, 20);
+        client.setLocation(100, 200);
+        c.add(client);
+ 
+        JRadioButton student = new JRadioButton("Student");
+        student.setFont(new Font("Arial", Font.PLAIN, 15));
+        student.setSelected(true);
+        student.setSize(120, 20);
+        student.setLocation(175, 200);
+        c.add(student);
+ 
+        JRadioButton fm = new JRadioButton("Faculty Member");
+        fm.setFont(new Font("Arial", Font.PLAIN, 15));
+        fm.setSelected(false);
+        fm.setSize(125, 20);
+        fm.setLocation(250, 200);
+        c.add(fm);
+        
+        JRadioButton nfs = new JRadioButton("NF staff");
+        nfs.setFont(new Font("Arial", Font.PLAIN, 15));
+        nfs.setSelected(false);
+        nfs.setSize(120, 20);
+        nfs.setLocation(350, 200);
+        c.add(nfs);
+ 
+        JRadioButton v = new JRadioButton("Visitor");
+        v.setFont(new Font("Arial", Font.PLAIN, 15));
+        v.setSelected(false);
+        v.setSize(120, 20);
+        v.setLocation(425, 200);
+        c.add(v);
+ 
+        ButtonGroup bg = new ButtonGroup();
+        bg.add(student);
+        bg.add(fm);
+        bg.add(nfs);
+        bg.add(v);
+ 
+        JButton register = new JButton("Register");
+        register.setFont(new Font("Arial", Font.PLAIN, 15));
+        register.setSize(100, 20);
+        register.setLocation(150, 450);
+//        sub.addActionListener(this);
+        c.add(register);
+ 
+
+ 
+     
+        frame.setVisible(true);
 			
 	}	
 	
 
 	public static void main(String[] args) {
 		
-//		new ParkingBookingSystemClient();
+		new ParkingBookingSystemClient();
 		
 		// Account constructor takes email then name then password..etc
 		// This is to make sure that you can check name and password correctly when logging in
@@ -109,10 +209,14 @@ public class ParkingBookingSystemClient {
 		
 		manager.addParkingLot();
 		
+		
+		// display these spaces in gui
 		System.out.println(student1.getAvailableSpaces());
+		// client chooses one 
+		// on event click then call client.bookParkingSpace
+		//
 		
 		
-	
 	
  
 
