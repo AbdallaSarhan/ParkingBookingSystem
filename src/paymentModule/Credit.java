@@ -3,12 +3,12 @@ package paymentModule;
 import parkingBookingModule.Booking;
 import userModule.Client;
 
-public class Credit implements PaymentMethod{
+public class Credit implements PaymentStrategy{
 
 	@Override
-	public boolean pay(Client client, Booking booking) {
-		// TODO Auto-generated method stub
-		return false;
+	public String pay(Client client, int cost) {
+	
+		return "Payment with Credit Card of " + cost;
 	}
 
 

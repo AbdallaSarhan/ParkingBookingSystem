@@ -1,44 +1,28 @@
 package paymentModule;
 
+import userModule.Client;
+
 public class PaymentContext {
 	
-	private int CardNumber;
-	private String nameOnCard;
-	private int cvv;
+	// Apart of strategy design pattern
+	private PaymentStrategy ps;
+	private Client cardHolder;
+
+
 	
-	public PaymentContext(int CardNumber, String nameOnCard, int cvv) {
-		this.CardNumber = CardNumber;
-		this.nameOnCard = nameOnCard;
-		this.cvv = cvv;
+	
+	public PaymentContext(PaymentStrategy ps, Client client ) {
+		this.ps = ps;
+		this.cardHolder = client;
+	
 	}
 	
-	public int getCardNumber() {
-		return CardNumber;
+	
+	public String pay(int cost) {
+		return ps.pay(this.cardHolder, cost);
 	}
 
 
-	public void setCardNumber(int cardNumber) {
-		this.CardNumber = cardNumber;
-	}
 
-
-	public String getNameOnCard() {
-		return nameOnCard;
-	}
-
-
-	public void setNameOnCard(String nameOnCard) {
-		this.nameOnCard = nameOnCard;
-	}
-
-
-	public int getCvv() {
-		return cvv;
-	}
-
-
-	public void setCvv(int cvv) {
-		this.cvv = cvv;
-	}
 
 }
