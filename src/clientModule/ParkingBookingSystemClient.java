@@ -1,7 +1,6 @@
 package clientModule;
 
 import java.awt.BorderLayout;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -16,6 +15,8 @@ import parkingBookingModule.ParkingSpace;
 import parkingBookingModule.Sensor;
 import userModule.*;
 
+
+
 public class ParkingBookingSystemClient {
 	
 	
@@ -28,20 +29,18 @@ public class ParkingBookingSystemClient {
 		// text area
 		JTextArea welcomeText = new JTextArea("Yorku Parking Booking system");
 		welcomeText.setEditable(false);
+		
 		// text field and labels
-		JLabel name_label = new JLabel("name");
+		JLabel name_label = new JLabel("Name");
 		JTextField name_input = new JTextField(15);
-		JLabel password_label = new JLabel("password");
+		JLabel password_label = new JLabel("Password");
 		JTextField password_input = new JTextField(15);
 		
 		
 		// Button
 		JButton login_button = new JButton("Login");
 		JButton register_button = new JButton("Register");
-		
-		
-		
-		
+			
 		
 		// Panel
 		JPanel authentication_buttons_panel = new JPanel();
@@ -56,8 +55,6 @@ public class ParkingBookingSystemClient {
 		password_data_panel.add(password_label);
 		password_data_panel.add(password_input);
 		
-		
-	
 		 
 		// add component to frame
 		frame.getContentPane().add(BorderLayout.NORTH, welcomeText);
@@ -72,9 +69,10 @@ public class ParkingBookingSystemClient {
 	}	
 	
 
+	
 	public static void main(String[] args) {
 		
-//		new ParkingBookingSystemClient();
+		//new ParkingBookingSystemClient();
 		
 		// Account constructor takes email then name then password..etc
 		// This is to make sure that you can check name and password correctly when logging in
