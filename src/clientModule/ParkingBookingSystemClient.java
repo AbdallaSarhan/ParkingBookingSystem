@@ -1,7 +1,9 @@
 package clientModule;
 
+
 import java.awt.*;
 import javax.swing.*;
+
 
 import parkingBookingModule.Booking;
 import parkingBookingModule.BookingSystem;
@@ -9,6 +11,8 @@ import parkingBookingModule.ParkingLot;
 import parkingBookingModule.ParkingSpace;
 import parkingBookingModule.Sensor;
 import userModule.*;
+
+
 
 public class ParkingBookingSystemClient {
 	
@@ -27,43 +31,22 @@ public class ParkingBookingSystemClient {
 		welcomeText.setFont(new Font("Serif", Font.BOLD, 30));
 		welcomeText.setBackground(Color.RED);
 		welcomeText.setEditable(false);
+		
 		// text field and labels
-		JLabel name_label = new JLabel("name");
-		JTextField name_input = new JTextField(1);
-		name_input.setBounds(5, 5, 20, 1);
-		//name_input.setBorder(BorderFactory.createEmptyBorder());
-		JLabel password_label = new JLabel("password");
-		JTextField password_input = new JTextField(1);
+
 		
 		
 		// Button
 		JButton login_button = new JButton("Login");
 		JButton register_button = new JButton("Register");
-		
-		
-		
-		
+			
 		
 		// Panel
 		JPanel authentication_buttons_panel = new JPanel();
 		authentication_buttons_panel.add(login_button);
 		authentication_buttons_panel.add(register_button);
 		
-		
-		JPanel name_panel = new JPanel();
-		name_panel.add(name_label);
-		name_panel.add(name_input);
-		
-		JPanel pass_panel = new JPanel();
-		pass_panel.add(password_label);
-		pass_panel.add(password_input);
-		
-		JPanel view_panel = new JPanel();
-		view_panel.add(name_panel);
-		view_panel.add(pass_panel);
-		
-		
-		view_panel.setLayout(new BoxLayout(view_panel, BoxLayout.Y_AXIS));
+
 		 
 		// add component to frame
 //		frame.getContentPane().add(BorderLayout.NORTH, welcomeText);
@@ -172,9 +155,12 @@ public class ParkingBookingSystemClient {
 	}	
 	
 
+	
 	public static void main(String[] args) {
 		
+
 		new ParkingBookingSystemClient();
+
 		
 		// Account constructor takes email then name then password..etc
 		// This is to make sure that you can check name and password correctly when logging in
