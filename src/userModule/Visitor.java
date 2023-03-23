@@ -11,16 +11,12 @@ public class Visitor extends Client {
 
 	@Override
 	public void register() {
-		
 		this.isRegistered = true;
 		// No verification needed for visitor
-		this.isVerified = true;
-	
-		
+		this.isVerified = true;	
 	}
 	
 	public int getRate() {
-		
 		return RATE;
 	}
 	
