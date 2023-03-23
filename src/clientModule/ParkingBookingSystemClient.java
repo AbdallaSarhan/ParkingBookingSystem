@@ -21,49 +21,35 @@ public class ParkingBookingSystemClient {
 	  
 	
 	public ParkingBookingSystemClient() {
-		 // Default
-//		JFrame frame = new JFrame();
-//		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//		frame.setSize(500,500);
-		
-		// text area
-		JTextArea welcomeText = new JTextArea("Yorku Parking Booking system", 1, 5);
-		welcomeText.setFont(new Font("Serif", Font.BOLD, 30));
-		welcomeText.setBackground(Color.RED);
-		welcomeText.setEditable(false);
-		
-		// text field and labels
-
-		
-		
-		// Button
-		JButton login_button = new JButton("Login");
-		JButton register_button = new JButton("Register");
-			
-		
-		// Panel
-		JPanel authentication_buttons_panel = new JPanel();
-		authentication_buttons_panel.add(login_button);
-		authentication_buttons_panel.add(register_button);
-		
-
-		 
-		// add component to frame
-//		frame.getContentPane().add(BorderLayout.NORTH, welcomeText);
-//		frame.getContentPane().add(BorderLayout.SOUTH, authentication_buttons_panel);
-//		frame.getContentPane().add(BorderLayout.CENTER, view_panel);
-//		frame.getContentPane().add(BorderLayout.CENTER, name_data_panel);
 	
-
+//		
+//		// text area
+//		JTextArea welcomeText = new JTextArea("Yorku Parking Booking system", 1, 5);
+//		welcomeText.setFont(new Font("Serif", Font.BOLD, 30));
+//		welcomeText.setBackground(Color.RED);
+//		welcomeText.setEditable(false);
+//		
+//		// text field and labels
+//
+//		
+//		
+//		// Button
+//		JButton login_button = new JButton("Login");
+//		JButton register_button = new JButton("Register");
+//			
+//		
+//		// Panel
+//		JPanel authentication_buttons_panel = new JPanel();
+//		authentication_buttons_panel.add(login_button);
+//		authentication_buttons_panel.add(register_button);
 		
-//		frame.setVisible(true);
+
+		 // Default
 		JFrame frame = new JFrame();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setBounds(300, 90, 900, 600);
 		frame.setTitle("Yorku Parking Booking System");
-//		setTitle("Registration Form");
 
-//        setDefaultCloseOperation(EXIT_ON_CLOSE);
         frame.setResizable(false);
  
         Container c = frame.getContentPane();
@@ -200,7 +186,6 @@ public class ParkingBookingSystemClient {
 		System.out.println(student1.getAvailableSpaces());
 		// client chooses one 
 		// on event click then call client.bookParkingSpace
-		//
 		
 		
 	
