@@ -10,7 +10,6 @@ public class BookingSystem implements Observer {
 	private static ArrayList<ParkingLot> parkinglots = new ArrayList<ParkingLot>();
 	private ArrayList<ParkingSpace> availableSpaces = new ArrayList<ParkingSpace>();
 	private EmptyParkingState emptyState;
-	private Booking booking;
 	private static final BookingSystem bookingSystem = new BookingSystem();
 	
 

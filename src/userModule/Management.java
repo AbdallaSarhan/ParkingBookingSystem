@@ -8,7 +8,7 @@ import parkingBookingModule.ParkingSpace;
 
 public class Management extends Account {
 	
-	// team is static because it belongs to the class rather than a specfic instance (will be shared by all objects)
+	// team is static because it belongs to the class rather than a specific instance (will be shared by all objects)
 	private static ArrayList<Management> team = new ArrayList<Management>();
 	private BookingSystem bookingSystem = BookingSystem.getInstance();
 	
