@@ -9,7 +9,7 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.*;
 
-
+import helperModule.clientFactory;
 import parkingBookingModule.Booking;
 import parkingBookingModule.BookingSystem;
 import parkingBookingModule.ParkingLot;
@@ -910,6 +910,9 @@ public class ParkingBookingSystemClient implements ActionListener{
 	
 		// client chooses one 
 		// on event click then call client.bookParkingSpace
+		
+		Client student = clientFactory.createClient("bob@no.com","student", "123", "awxj049");
+		System.out.println(student.getName());
 
 		//		ParkingSpace p = new ParkingSpace(parking, s);
 		//		ParkingSpace z = new ParkingSpace(parking, s);

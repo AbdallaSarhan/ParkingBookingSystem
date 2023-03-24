@@ -23,7 +23,7 @@ public abstract class Client extends Account {
 	
 	public String getName() {
 		
-		return name;
+		return this.name;
 	}
 	
 	@Override
@@ -43,6 +43,10 @@ public abstract class Client extends Account {
 	public String getEmail() {
 		
 		return this.email;
+	}
+	
+	public String getPassword() {
+		return this.password;
 	}
 	
 	public void setName(String name) {
