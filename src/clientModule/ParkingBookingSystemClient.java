@@ -75,6 +75,7 @@ public class ParkingBookingSystemClient implements ActionListener{
 	JToggleButton Spot4 = new JToggleButton("Spot D1"); 
 	JToggleButton Spot5 = new JToggleButton("Spot E1"); 
 	JToggleButton Spot6 = new JToggleButton("Spot F1"); 
+	Client user;
 
 
 
@@ -113,19 +114,6 @@ public class ParkingBookingSystemClient implements ActionListener{
 		tname.setLocation(366, 100);
 		c.add(tname);
 
-
-		JLabel pass = new JLabel("Password:");
-		pass.setFont(new Font("Arial", Font.PLAIN, 20));
-		pass.setSize(100, 20);
-		pass.setLocation(265, 200);
-		c.add(pass);
-
-		JTextField tpass = new JTextField();
-		tpass.setFont(new Font("Arial", Font.PLAIN, 15));
-		tpass.setSize(190, 20);
-		tpass.setLocation(366, 200);
-		c.add(tpass);
-		
 		JLabel mail = new JLabel("Email:");
 		mail.setFont(new Font("Arial", Font.PLAIN, 20));
 		mail.setSize(100, 20);
@@ -137,17 +125,43 @@ public class ParkingBookingSystemClient implements ActionListener{
 		tmail.setSize(190, 20);
 		tmail.setLocation(366, 150);
 		c.add(tmail);
+		
+		JLabel plate = new JLabel("Licence Plate:");
+		plate.setFont(new Font("Arial", Font.PLAIN, 20));
+		plate.setSize(300, 20);
+		plate.setLocation(235, 200);
+		c.add(plate);
+
+		JTextField tplate = new JTextField();
+		tplate.setFont(new Font("Arial", Font.PLAIN, 15));
+		tplate.setSize(190, 20);
+		tplate.setLocation(366, 200);
+		c.add(tplate);
+
+		JLabel pass = new JLabel("Password:");
+		pass.setFont(new Font("Arial", Font.PLAIN, 20));
+		pass.setSize(100, 20);
+		pass.setLocation(265, 250);
+		c.add(pass);
+
+		JTextField tpass = new JTextField();
+		tpass.setFont(new Font("Arial", Font.PLAIN, 15));
+		tpass.setSize(190, 20);
+		tpass.setLocation(366, 250);
+		c.add(tpass);
+		
+
 
 		JLabel client = new JLabel("Client:");
 		client.setFont(new Font("Arial", Font.PLAIN, 20));
 		client.setSize(100, 20);
-		client.setLocation(85, 300);
+		client.setLocation(85, 310);
 		c.add(client);
 
 		// JButton student = new JButton("Student");
 		student.setFont(new Font("Arial", Font.PLAIN, 15));
 		student.setSelected(false);
-		student.setBounds(150, 280, 150, 70);
+		student.setBounds(150, 290, 150, 70);
 		student.setOpaque(true);
 		student.setContentAreaFilled(true);
 		student.setBorderPainted(false);
@@ -159,7 +173,7 @@ public class ParkingBookingSystemClient implements ActionListener{
 		// JButton fm = new JButton("Faculty Member");
 		fm.setFont(new Font("Arial", Font.PLAIN, 15));
 		fm.setSelected(false);
-		fm.setBounds(310, 280, 150, 70);
+		fm.setBounds(310, 290, 150, 70);
 		fm.setOpaque(true);
 		fm.setContentAreaFilled(true);
 		fm.setBorderPainted(false);
@@ -172,7 +186,7 @@ public class ParkingBookingSystemClient implements ActionListener{
 		//  JButton nfs = new JButton("NF staff");
 		nfs.setFont(new Font("Arial", Font.PLAIN, 15));
 		nfs.setSelected(false);
-		nfs.setBounds(470, 280, 200, 70);
+		nfs.setBounds(470, 290, 200, 70);
 		nfs.setOpaque(true);
 		nfs.setContentAreaFilled(true);
 		nfs.setBorderPainted(false);
@@ -185,7 +199,7 @@ public class ParkingBookingSystemClient implements ActionListener{
 		//   JButton v = new JButton("Visitor");
 		v.setFont(new Font("Arial", Font.PLAIN, 15));
 		v.setSelected(false);
-		v.setBounds(680, 280, 150, 70);
+		v.setBounds(680, 290, 150, 70);
 		v.setOpaque(true);
 		v.setContentAreaFilled(true);
 		v.setBorderPainted(false);
@@ -197,7 +211,7 @@ public class ParkingBookingSystemClient implements ActionListener{
 
 		// register button
 		register.setFont(new Font("Arial", Font.BOLD, 15));
-		register.setBounds(300, 380, 300, 70);
+		register.setBounds(300, 390, 300, 70);
 		register.setOpaque(true);
 		register.setContentAreaFilled(true);
 		register.setBorderPainted(false);
@@ -223,9 +237,16 @@ public class ParkingBookingSystemClient implements ActionListener{
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				super.mouseClicked(e);
-				System.out.println(tname.getText());
-				System.out.println(tpass.getText());
-				System.out.println(bg.getSelection().getActionCommand());
+			
+				
+				
+				
+//				System.out.println(tname.getText());
+//				System.out.println(tpass.getText());
+//				System.out.println(bg.getSelection().getActionCommand());
+				
+				
+				
 				frame2.setVisible(true);
 				frame1.dispose();
 		
@@ -307,7 +328,6 @@ public class ParkingBookingSystemClient implements ActionListener{
 		Container c3 = frame3.getContentPane();
 		c3.setLayout(null);
 		frame3.getContentPane().setBackground(new java.awt.Color(227, 24, 55));
-
 
 		JLabel title3 = new JLabel("Book A Spot");
 		title3.setFont(new Font("Arial", Font.BOLD, 25));
@@ -500,7 +520,13 @@ public class ParkingBookingSystemClient implements ActionListener{
 		bg2.add(Spot4);
 		bg2.add(Spot5);
 		bg2.add(Spot6);
-		
+		Spot1.setActionCommand("Spot A1");
+		Spot2.setActionCommand("Spot B1"); 
+		Spot3.setActionCommand("Spot C1"); 
+		Spot4.setActionCommand("Spot D1"); 
+		Spot5.setActionCommand("Spot E1"); 
+		Spot6.setActionCommand("Spot F1"); 
+
 		ButtonGroup bg5 = new ButtonGroup();
 		bg5.add(Time1);
 		bg5.add(Time2);
@@ -509,6 +535,22 @@ public class ParkingBookingSystemClient implements ActionListener{
 		bg5.add(Time5);
 		bg5.add(Time6);
 		bg5.add(Time7);
+		Time1.setActionCommand("1");
+		Time7.setActionCommand("2"); 
+		Time2.setActionCommand("3"); 
+		Time3.setActionCommand("4"); 
+		Time4.setActionCommand("5"); 
+		Time5.setActionCommand("6"); 
+		Time6.setActionCommand("7"); 
+		
+//		JToggleButton Time1 = new JToggleButton("1 Hour");
+//		JToggleButton Time7 = new JToggleButton("2 Hours"); 
+//		JToggleButton Time2 = new JToggleButton("3 Hours"); 
+//		JToggleButton Time3 = new JToggleButton("4 Hours"); 
+//		JToggleButton Time4 = new JToggleButton("5 Hours");
+//		JToggleButton Time5 = new JToggleButton("6 Hours"); 
+//		JToggleButton Time6 = new JToggleButton("7 Hours");
+
 
 
 
@@ -710,6 +752,10 @@ public class ParkingBookingSystemClient implements ActionListener{
 		bg3.add(credit);
 		bg3.add(debit);
 		bg3.add(mobile);
+		credit.setActionCommand("Credit");
+		debit.setActionCommand("Debit"); 
+		mobile.setActionCommand("Mobile"); 
+
 
 		/////////////////////////// FRAME 7 (Choose extension) ///////////////////////////////////////////
 
@@ -796,13 +842,13 @@ public class ParkingBookingSystemClient implements ActionListener{
 		bg4.add(time2);
 		bg4.add(time3);
 		bg4.add(time4);
+		time1.setActionCommand("1");
+		time2.setActionCommand("2");
+		time3.setActionCommand("3");
+		time4.setActionCommand("4");
 
 
-
-
-
-
-
+		
 		frame7.setVisible(false);
 		frame6.setVisible(false);
 		frame5.setVisible(false);
@@ -812,6 +858,8 @@ public class ParkingBookingSystemClient implements ActionListener{
 		frame1.setVisible(true);
 
 	}	
+	
+	
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
