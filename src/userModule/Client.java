@@ -14,6 +14,7 @@ public abstract class Client extends Account {
 	private Booking booking;
 	protected boolean isRegistered = false;
 	protected boolean isVerified = false;
+//	protected boolean loggedIn = false;
 	
 	
 	public Client(String name, String email, String password, String licensePlate) {
@@ -23,13 +24,13 @@ public abstract class Client extends Account {
 	
 	public String getName() {
 		
-		return name;
+		return this.name;
 	}
 	
 	@Override
 	public void login(String name, String password) {
 		
-		if(this.name  == name && this.password == password && this.isVerified == true) {
+		if(this.name.equals(name) && this.password.equals(password) && this.isVerified) {
 			loggedIn = true;
 		}
 		
@@ -45,6 +46,10 @@ public abstract class Client extends Account {
 		return this.email;
 	}
 	
+	public String getPassword() {
+		return this.password;
+	}
+	
 	public void setName(String name) {
 		 this.name = name;
 	}
@@ -58,11 +63,11 @@ public abstract class Client extends Account {
 		this.email = email;
 	}
 
-	public boolean getRegistrationStatus() {
+	public boolean isRegistered() {
 		
 		return this.isRegistered;
 	}
-	public boolean getVerificationStatus() {
+	public boolean isVerified() {
 		
 		return this.isVerified;
 	}

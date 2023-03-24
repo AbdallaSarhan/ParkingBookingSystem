@@ -9,7 +9,7 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.*;
 
-
+import helperModule.clientFactory;
 import parkingBookingModule.Booking;
 import parkingBookingModule.BookingSystem;
 import parkingBookingModule.ParkingLot;
@@ -75,14 +75,16 @@ public class ParkingBookingSystemClient implements ActionListener{
 	JToggleButton Spot4 = new JToggleButton("Spot D1"); 
 	JToggleButton Spot5 = new JToggleButton("Spot E1"); 
 	JToggleButton Spot6 = new JToggleButton("Spot F1"); 
+	Client user;
 
 
+	SuperManager superManager = SuperManager.getInstance();
+	Manager manager = superManager.createManagementAccount("manager@gmail.com", "manager", "manager");
 
 	public ParkingBookingSystemClient() {
-
-
+		
 		/////////////////////////// FRAME 1 (Registration) ///////////////////////////////////////////
-
+		
 
 		frame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame1.setBounds(300, 90, 900, 600);
@@ -112,30 +114,55 @@ public class ParkingBookingSystemClient implements ActionListener{
 		tname.setSize(190, 20);
 		tname.setLocation(366, 100);
 		c.add(tname);
+		
+
+		JLabel plate = new JLabel("Licence Plate:");
+		plate.setFont(new Font("Arial", Font.PLAIN, 20));
+		plate.setSize(300, 20);
+		plate.setLocation(235, 200);
+		c.add(plate);
+
+		JTextField tplate = new JTextField();
+		tplate.setFont(new Font("Arial", Font.PLAIN, 15));
+		tplate.setSize(190, 20);
+		tplate.setLocation(366, 200);
+		c.add(tplate);
 
 
 		JLabel pass = new JLabel("Password:");
 		pass.setFont(new Font("Arial", Font.PLAIN, 20));
 		pass.setSize(100, 20);
-		pass.setLocation(265, 150);
+		pass.setLocation(265, 250);
 		c.add(pass);
 
 		JTextField tpass = new JTextField();
 		tpass.setFont(new Font("Arial", Font.PLAIN, 15));
 		tpass.setSize(190, 20);
-		tpass.setLocation(366, 150);
+		tpass.setLocation(366, 250);
 		c.add(tpass);
+		
+		JLabel mail = new JLabel("Email:");
+		mail.setFont(new Font("Arial", Font.PLAIN, 20));
+		mail.setSize(100, 20);
+		mail.setLocation(304, 150);
+		c.add(mail);
+
+		JTextField tmail = new JTextField();
+		tmail.setFont(new Font("Arial", Font.PLAIN, 15));
+		tmail.setSize(190, 20);
+		tmail.setLocation(366, 150);
+		c.add(tmail);
 
 		JLabel client = new JLabel("Client:");
 		client.setFont(new Font("Arial", Font.PLAIN, 20));
 		client.setSize(100, 20);
-		client.setLocation(85, 250);
+		client.setLocation(85, 300);
 		c.add(client);
 
 		// JButton student = new JButton("Student");
 		student.setFont(new Font("Arial", Font.PLAIN, 15));
 		student.setSelected(false);
-		student.setBounds(150, 230, 150, 70);
+		student.setBounds(150, 280, 150, 70);
 		student.setOpaque(true);
 		student.setContentAreaFilled(true);
 		student.setBorderPainted(false);
@@ -147,7 +174,7 @@ public class ParkingBookingSystemClient implements ActionListener{
 		// JButton fm = new JButton("Faculty Member");
 		fm.setFont(new Font("Arial", Font.PLAIN, 15));
 		fm.setSelected(false);
-		fm.setBounds(310, 230, 150, 70);
+		fm.setBounds(310, 280, 150, 70);
 		fm.setOpaque(true);
 		fm.setContentAreaFilled(true);
 		fm.setBorderPainted(false);
@@ -160,7 +187,7 @@ public class ParkingBookingSystemClient implements ActionListener{
 		//  JButton nfs = new JButton("NF staff");
 		nfs.setFont(new Font("Arial", Font.PLAIN, 15));
 		nfs.setSelected(false);
-		nfs.setBounds(470, 230, 200, 70);
+		nfs.setBounds(470, 280, 200, 70);
 		nfs.setOpaque(true);
 		nfs.setContentAreaFilled(true);
 		nfs.setBorderPainted(false);
@@ -173,7 +200,7 @@ public class ParkingBookingSystemClient implements ActionListener{
 		//   JButton v = new JButton("Visitor");
 		v.setFont(new Font("Arial", Font.PLAIN, 15));
 		v.setSelected(false);
-		v.setBounds(680, 230, 150, 70);
+		v.setBounds(680, 280, 150, 70);
 		v.setOpaque(true);
 		v.setContentAreaFilled(true);
 		v.setBorderPainted(false);
@@ -211,19 +238,18 @@ public class ParkingBookingSystemClient implements ActionListener{
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				super.mouseClicked(e);
-				Client client = new Client(tname.getText(), "129@gmail.com", tpass.getName());
-				System.out.println(tname.getText());
-				System.out.println(tpass.getText());
-				System.out.println(bg.getSelection().getActionCommand());
-				frame2.setVisible(true);
-				frame1.dispose();
-		
-
+				user = clientFactory.createClient(bg.getSelection().getActionCommand(), tmail.getText(),tname.getText(), tpass.getText(), tplate.getText());
+				user.register();
+				manager.validateAccount(user);
+				if(user.isVerified()) {
+					frame2.setVisible(true);
+					frame1.dispose();
+				}
 				
 			}
 		};
 		register.addMouseListener(registerButtonListener);
-
+	
 	
 
 
@@ -281,9 +307,33 @@ public class ParkingBookingSystemClient implements ActionListener{
 		Login.setFocusPainted(false);
 		Login.setBackground(new java.awt.Color(214, 207, 202));
 		Login.setForeground(new java.awt.Color(129, 0, 1));
-		Login.addActionListener(this);
+//		Login.addActionListener(this);
 		c2.add(Login);
 
+		
+		MouseAdapter loginButtonListener = new MouseAdapter() {
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				super.mouseClicked(e);
+				user.login(tname2.getText(), tpass2.getText());
+			
+//				System.out.println(tname2.getText());
+//				System.out.println(tpass2.getText());
+				System.out.println(user.isLoggedIn());
+//				System.out.println(bg.getSelection().getActionCommand());
+				
+				if(user.isLoggedIn()) {
+					frame3.setVisible(true);
+					frame2.dispose();
+				}
+		
+		
+
+				
+			}
+		};
+		Login.addMouseListener(loginButtonListener);
 
 		/////////////////////////// FRAME 3 (SPOT SELECTION) ///////////////////////////////////////////
 
@@ -498,6 +548,29 @@ public class ParkingBookingSystemClient implements ActionListener{
 		bg5.add(Time5);
 		bg5.add(Time6);
 		bg5.add(Time7);
+		
+		MouseAdapter bookButtonListener = new MouseAdapter() {
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				super.mouseClicked(e);
+				user.login(tname2.getText(), tpass2.getText());
+			
+//				System.out.println(tname2.getText());
+//				System.out.println(tpass2.getText());
+//				System.out.println(user.getEmail());
+//				System.out.println(bg.getSelection().getActionCommand());
+				
+				
+				frame3.setVisible(true);
+				frame2.dispose();
+		
+
+				
+			}
+		};
+		Login.addMouseListener(loginButtonListener);
+
 
 
 
@@ -867,17 +940,15 @@ public class ParkingBookingSystemClient implements ActionListener{
 		student1.login("Abdalla", "AbdallaSSS128");
 		System.out.println(student1.isLoggedIn());
 
-		System.out.println(student1.getVerificationStatus());
-		System.out.println(student1.getRegistrationStatus());
+	
 
 		FacultyMember prof1 = new FacultyMember("mokhtar@eecs.ca", "Mokhtar", "Mokhtar128", "IA5CC3");
-		System.out.println(prof1.getVerificationStatus());
-		System.out.println(prof1.getRegistrationStatus());
+		
 		prof1.register();
-		System.out.println(prof1.getRegistrationStatus());
+		
 		manager.validateAccount(prof1);
 		prof1.login("Mokhtar", "Mokhtar128");
-		System.out.println(prof1.getVerificationStatus());
+		
 
 		manager.addParkingLot();
 
@@ -899,6 +970,9 @@ public class ParkingBookingSystemClient implements ActionListener{
 	
 		// client chooses one 
 		// on event click then call client.bookParkingSpace
+		
+		//Client student = clientFactory.createClient("123@no.com","student", "123", "awxj049");
+	//	System.out.println(student.getName());
 
 		//		ParkingSpace p = new ParkingSpace(parking, s);
 		//		ParkingSpace z = new ParkingSpace(parking, s);
