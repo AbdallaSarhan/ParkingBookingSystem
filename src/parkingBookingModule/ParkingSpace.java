@@ -5,7 +5,7 @@ import userModule.Client;
 
 public class ParkingSpace implements Subject{
 	// IDref used to reference next parking space id
-	private static long IDref = 0;
+	private static long IDref = -1;
 	private long spaceId;
 	private ParkingLot lot;
 	private OccupiedParkingState occupiedState = new OccupiedParkingState();

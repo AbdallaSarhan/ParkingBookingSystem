@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 import javax.swing.*;
 
@@ -69,18 +70,19 @@ public class ParkingBookingSystemClient implements ActionListener{
 	JToggleButton Time7 = new JToggleButton("7 Hours"); 
 
 
-	JToggleButton Spot1 = new JToggleButton("Spot A1"); 
-	JToggleButton Spot2 = new JToggleButton("Spot B1"); 
-	JToggleButton Spot3 = new JToggleButton("Spot C1"); 
-	JToggleButton Spot4 = new JToggleButton("Spot D1"); 
-	JToggleButton Spot5 = new JToggleButton("Spot E1"); 
-	JToggleButton Spot6 = new JToggleButton("Spot F1"); 
+	JToggleButton Spot1;
+	JToggleButton Spot2;
+	JToggleButton Spot3; 
+	JToggleButton Spot4;
+	JToggleButton Spot5;
+	JToggleButton Spot6;
 	Client user;
-
+	int hoursBooked = 0;
 
 	SuperManager superManager = SuperManager.getInstance();
 	Manager manager = superManager.createManagementAccount("manager@gmail.com", "manager", "manager");
-
+	BookingSystem bookingSystem = BookingSystem.getInstance();
+	Booking userBooking;
 	public ParkingBookingSystemClient() {
 		
 		/////////////////////////// FRAME 1 (Registration) ///////////////////////////////////////////
@@ -221,7 +223,7 @@ public class ParkingBookingSystemClient implements ActionListener{
 		register.setFocusPainted(false);
 		register.setBackground(new java.awt.Color(214, 207, 202));
 		register.setForeground(new java.awt.Color(129, 0, 1));
-//		register.addActionListener(this);
+
 		c.add(register);
 		
 		ButtonGroup bg = new ButtonGroup();
@@ -231,7 +233,7 @@ public class ParkingBookingSystemClient implements ActionListener{
 		bg.add(v);
 		student.setActionCommand("Student"); 
 		fm.setActionCommand("Faculty Member");
-		nfs.setActionCommand("Non-Faculty Member");
+		nfs.setActionCommand("Non-Faculty Staff");
 		v.setActionCommand("Visitor");
 		
 		
@@ -313,19 +315,17 @@ public class ParkingBookingSystemClient implements ActionListener{
 //		Login.addActionListener(this);
 		c2.add(Login);
 
-		
 		MouseAdapter loginButtonListener = new MouseAdapter() {
 			
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				super.mouseClicked(e);
 				user.login(tname2.getText(), tpass2.getText());
-			
-//				System.out.println(tname2.getText());
-//				System.out.println(tpass2.getText());
+
 				System.out.println(user.isLoggedIn());
-//				System.out.println(bg.getSelection().getActionCommand());
 				
+				
+				user.getAvailableSpaces();
 				if(user.isLoggedIn()) {
 					frame3.setVisible(true);
 					frame2.dispose();
@@ -356,6 +356,17 @@ public class ParkingBookingSystemClient implements ActionListener{
 		title3.setLocation(370, 80);
 		title3.setBackground(Color.red);
 		c3.add(title3);
+		
+		manager.addParkingLot();
+		ArrayList<ParkingSpace> availableSpaces = bookingSystem.getAvailableSpaces();
+	
+		 Spot1 = new JToggleButton(String.valueOf("Spot " + availableSpaces.get(0).getId())); 
+		 Spot2 = new JToggleButton(String.valueOf("Spot " +availableSpaces.get(1).getId())); 
+		 Spot3 = new JToggleButton(String.valueOf("Spot " +availableSpaces.get(2).getId())); 
+		 Spot4 = new JToggleButton(String.valueOf("Spot " +availableSpaces.get(3).getId())); 
+		 Spot5 = new JToggleButton(String.valueOf("Spot " +availableSpaces.get(4).getId())); 
+		 Spot6 = new JToggleButton(String.valueOf("Spot " +availableSpaces.get(5).getId())); 
+
 
 		Spot1.setFont(new Font("Arial", Font.PLAIN, 15));
 		Spot1.setSelected(false);
@@ -428,7 +439,7 @@ public class ParkingBookingSystemClient implements ActionListener{
 		Spot6.setForeground(new java.awt.Color(129, 0, 1));
 		Spot6.addActionListener(this);
 		c3.add(Spot6);
-
+		
 		JLabel Hours = new JLabel("How many hours would you like to book?");
 		Hours.setFont(new Font("Arial", Font.PLAIN, 25));
 		Hours.setSize(730, 30);
@@ -541,12 +552,12 @@ public class ParkingBookingSystemClient implements ActionListener{
 		bg2.add(Spot4);
 		bg2.add(Spot5);
 		bg2.add(Spot6);
-		Spot1.setActionCommand("Spot A1");
-		Spot2.setActionCommand("Spot B1"); 
-		Spot3.setActionCommand("Spot C1"); 
-		Spot4.setActionCommand("Spot D1"); 
-		Spot5.setActionCommand("Spot E1"); 
-		Spot6.setActionCommand("Spot F1"); 
+		Spot1.setActionCommand("0");
+		Spot2.setActionCommand("1"); 
+		Spot3.setActionCommand("2"); 
+		Spot4.setActionCommand("3"); 
+		Spot5.setActionCommand("4"); 
+		Spot6.setActionCommand("5"); 
 
 		ButtonGroup bg5 = new ButtonGroup();
 		bg5.add(Time1);
@@ -568,41 +579,42 @@ public class ParkingBookingSystemClient implements ActionListener{
 
 
 		
-		
+	
 		MouseAdapter bookButtonListener = new MouseAdapter() {
 			
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				super.mouseClicked(e);
-				user.login(tname2.getText(), tpass2.getText());
-			
-//				System.out.println(tname2.getText());
-//				System.out.println(tpass2.getText());
+				
+				userBooking = user.bookParkingSpace(bookingSystem.getAvailableSpaces().get(Integer.valueOf(bg2.getSelection().getActionCommand())), Integer.valueOf(bg5.getSelection().getActionCommand()));
+				hoursBooked = userBooking.getBookedHours();
+				System.out.println(bookingSystem.getAvailableSpaces().size());
 //				System.out.println(user.getEmail());
 //				System.out.println(bg.getSelection().getActionCommand());
 				
-				
-				frame3.setVisible(true);
-				frame2.dispose();
-		
+	
+			
+//				frame3.setVisible(true);
+//				frame2.dispose();
+//		
 
 				
 			}
 		};
-		Login.addMouseListener(loginButtonListener);
+		Book.addMouseListener(bookButtonListener);
 
 		
-
+	
 
 		/////////////////////////// FRAME 4 (Menu) ///////////////////////////////////////////
-
-
 		frame4.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame4.setBounds(300, 90, 900, 600);
 		frame4.setTitle("Yorku Parking Booking System");
 
 		frame4.setResizable(false);
 		Container c4 = frame4.getContentPane();
+
+		
 		c4.setLayout(null);
 		frame4.getContentPane().setBackground(new java.awt.Color(227, 24, 55));
 
@@ -614,7 +626,9 @@ public class ParkingBookingSystemClient implements ActionListener{
 		title4.setBackground(Color.red);
 		c4.add(title4);
 
-		JLabel Price = new JLabel("You have booked Spot D2 for 5 hours, you will be charged $40");
+//		JLabel Price = new JLabel("You have booked Spot D2 for "+ hoursBooked +  " , you will be charged $40");
+		JLabel Price = new JLabel("You have booked Spot D2 for "+ hoursBooked +  " , you will be charged $40");
+		
 		Price.setFont(new Font("Arial", Font.ITALIC, 25));
 		Price.setSize(730, 30);
 		Price.setLocation(100, 100);
