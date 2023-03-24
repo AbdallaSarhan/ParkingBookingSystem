@@ -117,25 +117,37 @@ public class ParkingBookingSystemClient implements ActionListener{
 		JLabel pass = new JLabel("Password:");
 		pass.setFont(new Font("Arial", Font.PLAIN, 20));
 		pass.setSize(100, 20);
-		pass.setLocation(265, 150);
+		pass.setLocation(265, 200);
 		c.add(pass);
 
 		JTextField tpass = new JTextField();
 		tpass.setFont(new Font("Arial", Font.PLAIN, 15));
 		tpass.setSize(190, 20);
-		tpass.setLocation(366, 150);
+		tpass.setLocation(366, 200);
 		c.add(tpass);
+		
+		JLabel mail = new JLabel("Email:");
+		mail.setFont(new Font("Arial", Font.PLAIN, 20));
+		mail.setSize(100, 20);
+		mail.setLocation(304, 150);
+		c.add(mail);
+
+		JTextField tmail = new JTextField();
+		tmail.setFont(new Font("Arial", Font.PLAIN, 15));
+		tmail.setSize(190, 20);
+		tmail.setLocation(366, 150);
+		c.add(tmail);
 
 		JLabel client = new JLabel("Client:");
 		client.setFont(new Font("Arial", Font.PLAIN, 20));
 		client.setSize(100, 20);
-		client.setLocation(85, 250);
+		client.setLocation(85, 300);
 		c.add(client);
 
 		// JButton student = new JButton("Student");
 		student.setFont(new Font("Arial", Font.PLAIN, 15));
 		student.setSelected(false);
-		student.setBounds(150, 230, 150, 70);
+		student.setBounds(150, 280, 150, 70);
 		student.setOpaque(true);
 		student.setContentAreaFilled(true);
 		student.setBorderPainted(false);
@@ -147,7 +159,7 @@ public class ParkingBookingSystemClient implements ActionListener{
 		// JButton fm = new JButton("Faculty Member");
 		fm.setFont(new Font("Arial", Font.PLAIN, 15));
 		fm.setSelected(false);
-		fm.setBounds(310, 230, 150, 70);
+		fm.setBounds(310, 280, 150, 70);
 		fm.setOpaque(true);
 		fm.setContentAreaFilled(true);
 		fm.setBorderPainted(false);
@@ -160,7 +172,7 @@ public class ParkingBookingSystemClient implements ActionListener{
 		//  JButton nfs = new JButton("NF staff");
 		nfs.setFont(new Font("Arial", Font.PLAIN, 15));
 		nfs.setSelected(false);
-		nfs.setBounds(470, 230, 200, 70);
+		nfs.setBounds(470, 280, 200, 70);
 		nfs.setOpaque(true);
 		nfs.setContentAreaFilled(true);
 		nfs.setBorderPainted(false);
@@ -173,7 +185,7 @@ public class ParkingBookingSystemClient implements ActionListener{
 		//   JButton v = new JButton("Visitor");
 		v.setFont(new Font("Arial", Font.PLAIN, 15));
 		v.setSelected(false);
-		v.setBounds(680, 230, 150, 70);
+		v.setBounds(680, 280, 150, 70);
 		v.setOpaque(true);
 		v.setContentAreaFilled(true);
 		v.setBorderPainted(false);
