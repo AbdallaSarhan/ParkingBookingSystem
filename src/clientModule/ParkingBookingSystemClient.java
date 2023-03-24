@@ -184,13 +184,13 @@ public class ParkingBookingSystemClient {
 		
 		
 		// display these spaces in gui
-		System.out.println(student1.getAvailableSpaces());
+		System.out.println(student1.getAvailableSpaces().size());
 		
 		//student1.bookParkingSpace(student1.getAvailableSpaces().get(0), 10);
-		//System.out.println(prof1.getAvailableSpaces().size());
-		prof1.bookParkingSpace(prof1.getAvailableSpaces().get(1), 10);
+		System.out.println(prof1.getAvailableSpaces().size());
+		prof1.bookParkingSpace(prof1.getAvailableSpaces().get(0), 10);
 		
-		
+		System.out.println(prof1.getAvailableSpaces().size());
 	
 		
 //		prof1.bookParkingSpace(prof1.getAvailableSpaces().get(1), 10);

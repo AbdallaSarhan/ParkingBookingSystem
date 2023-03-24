@@ -6,13 +6,13 @@ public interface Subject {
 	
 	// Subject (publisher) for the Observer design pattern
 	
-	public void attach(ParkingSpace parkingSpace);
+	public void attach();
 	
 	
-	public void detach(ParkingSpace parkingSpace);
+	public void detach();
 	
 	
-	public void notifyObservers(ParkingSpace parkingSpace);
+	public void notifyObservers();
 	
 
 }
