@@ -4,6 +4,9 @@ package clientModule;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
 import javax.swing.*;
 
 import helperModule.clientFactory;
@@ -110,6 +113,7 @@ public class ParkingBookingSystemClient implements ActionListener{
 		tname.setLocation(366, 100);
 		c.add(tname);
 
+
 		JLabel pass = new JLabel("Password:");
 		pass.setFont(new Font("Arial", Font.PLAIN, 20));
 		pass.setSize(100, 20);
@@ -140,7 +144,6 @@ public class ParkingBookingSystemClient implements ActionListener{
 		student.setForeground(new java.awt.Color(129, 0, 1));
 		student.addActionListener(this);
 		c.add(student);
-
 		// JButton fm = new JButton("Faculty Member");
 		fm.setFont(new Font("Arial", Font.PLAIN, 15));
 		fm.setSelected(false);
@@ -189,14 +192,38 @@ public class ParkingBookingSystemClient implements ActionListener{
 		register.setFocusPainted(false);
 		register.setBackground(new java.awt.Color(214, 207, 202));
 		register.setForeground(new java.awt.Color(129, 0, 1));
-		register.addActionListener(this);
+//		register.addActionListener(this);
 		c.add(register);
-
+		
 		ButtonGroup bg = new ButtonGroup();
 		bg.add(student);
 		bg.add(fm);
 		bg.add(nfs);
 		bg.add(v);
+		student.setActionCommand("Student"); 
+		fm.setActionCommand("Faculty Member");
+		nfs.setActionCommand("Non-Faculty Member");
+		v.setActionCommand("Visitor");
+		
+		
+		MouseAdapter registerButtonListener = new MouseAdapter() {
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				super.mouseClicked(e);
+				System.out.println(tname.getText());
+				System.out.println(tpass.getText());
+				System.out.println(bg.getSelection().getActionCommand());
+				frame2.setVisible(true);
+				frame1.dispose();
+		
+
+				
+			}
+		};
+		register.addMouseListener(registerButtonListener);
+
+	
 
 
 
