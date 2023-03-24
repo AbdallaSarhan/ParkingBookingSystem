@@ -3,12 +3,12 @@ package paymentModule;
 import parkingBookingModule.Booking;
 import userModule.Client;
 
-public class Debit implements PaymentMethod{
+public class Debit implements PaymentStrategy{
 
 	@Override
-	public boolean pay(Client client, Booking booking) {
-		// TODO Auto-generated method stub
-		return false;
+	public String pay(Client client, int cost) {
+		
+		return "Payment with Debit Card of " + cost;
 	}
 
 

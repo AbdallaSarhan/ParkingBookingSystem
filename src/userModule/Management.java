@@ -18,7 +18,7 @@ public class Management extends Account {
 	
 	public void validateAccount(Client client) {
 		// Checks if user is a student or faculty or non Faculty staff and entered valid info
-		if(client.isRegistered) {
+		if(client.isRegistered && this.loggedIn == true) {
 			
 			if(!client.getName().equals("") && !client.getLicensePlate().equals("") && !client.getEmail().equals("")) {
 				 client.verify();

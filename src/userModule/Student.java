@@ -16,7 +16,6 @@ public class Student extends Client {
 	}
 	
 	public int getRate() {
-		
 		return RATE;
 	}
 	

@@ -706,7 +706,7 @@ public class ParkingBookingSystemClient implements ActionListener{
 	public static void main(String[] args) {
 
 
-		new ParkingBookingSystemClient();
+//		new ParkingBookingSystemClient();
 
 
 		// Account constructor takes email then name then password..etc
@@ -738,6 +738,7 @@ public class ParkingBookingSystemClient implements ActionListener{
 		prof1.register();
 		System.out.println(prof1.getRegistrationStatus());
 		manager.validateAccount(prof1);
+		prof1.login("Mokhtar", "Mokhtar128");
 		System.out.println(prof1.getVerificationStatus());
 
 		manager.addParkingLot();
@@ -746,6 +747,18 @@ public class ParkingBookingSystemClient implements ActionListener{
 		// display these spaces in GUI
 		System.out.println(student1.getAvailableSpaces());
 
+		
+		//student1.bookParkingSpace(student1.getAvailableSpaces().get(0), 10);
+		//System.out.println(prof1.getAvailableSpaces().size());
+		prof1.bookParkingSpace(prof1.getAvailableSpaces().get(1), 10);
+		
+		
+	
+		
+//		prof1.bookParkingSpace(prof1.getAvailableSpaces().get(1), 10);
+		
+	//	System.out.println(prof1.pay("Debit"));
+	
 		// client chooses one 
 		// on event click then call client.bookParkingSpace
 

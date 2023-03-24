@@ -11,6 +11,7 @@ public abstract class Client extends Account {
 	private String licensePlate;
 	private BookingSystem bookingSystem = BookingSystem.getInstance();
 	private ParkingSpace parkingSpace;
+	private Booking booking;
 	protected boolean isRegistered = false;
 	protected boolean isVerified = false;
 	
@@ -85,9 +86,15 @@ public abstract class Client extends Account {
 	}
 	
 	public Booking bookParkingSpace(ParkingSpace parkingSpace, int hours) {
-		
-		return bookingSystem.bookParkingSpace(this, parkingSpace, hours);
+		this.booking = bookingSystem.bookParkingSpace(this, parkingSpace, hours);
+		return this.booking;
 	}
+	
+	public String pay(String paymentMethod) {
+		
+		return bookingSystem.payForBooking(this, this.booking, paymentMethod);
+	}
+	
 	
 	public Booking editBooking(ParkingSpace parkingSpace) {
 		
