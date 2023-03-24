@@ -106,8 +106,8 @@ public abstract class Client extends Account {
 	}
 	
 	public Booking cancelBooking(ParkingSpace parkingSpace) {
-
-		return null;
+		this.booking = bookingSystem.bookParkingSpace(this, null, 1);
+		return this.booking;
 	}
 	
 	public Booking extendBooking(ParkingSpace parkingSpace) {

@@ -61,12 +61,12 @@ public class ParkingBookingSystemClient implements ActionListener{
 	JToggleButton time4 = new JToggleButton("4 Hours");
 	
 	JToggleButton Time1 = new JToggleButton("1 Hour");
-	JToggleButton Time7 = new JToggleButton("2 Hours"); 
-	JToggleButton Time2 = new JToggleButton("3 Hours"); 
-	JToggleButton Time3 = new JToggleButton("4 Hours"); 
-	JToggleButton Time4 = new JToggleButton("5 Hours");
-	JToggleButton Time5 = new JToggleButton("6 Hours"); 
-	JToggleButton Time6 = new JToggleButton("7 Hours"); 
+	JToggleButton Time2 = new JToggleButton("2 Hours"); 
+	JToggleButton Time3 = new JToggleButton("3 Hours"); 
+	JToggleButton Time4 = new JToggleButton("4 Hours"); 
+	JToggleButton Time5 = new JToggleButton("5 Hours");
+	JToggleButton Time6 = new JToggleButton("6 Hours"); 
+	JToggleButton Time7 = new JToggleButton("7 Hours"); 
 
 
 	JToggleButton Spot1 = new JToggleButton("Spot A1"); 
@@ -429,7 +429,7 @@ public class ParkingBookingSystemClient implements ActionListener{
 
 		Time2.setFont(new Font("Arial", Font.PLAIN, 15));
 		Time2.setSelected(false);
-		Time2.setBounds(290, 300, 100, 70);
+		Time2.setBounds(170, 300, 100, 70);
 		Time2.setOpaque(true);
 		Time2.setContentAreaFilled(true);
 		Time2.setBorderPainted(false);
@@ -441,7 +441,7 @@ public class ParkingBookingSystemClient implements ActionListener{
 
 		Time3.setFont(new Font("Arial", Font.PLAIN, 15));
 		Time3.setSelected(false);
-		Time3.setBounds(410, 300, 100, 70);
+		Time3.setBounds(290, 300, 100, 70);
 		Time3.setOpaque(true);
 		Time3.setContentAreaFilled(true);
 		Time3.setBorderPainted(false);
@@ -453,7 +453,7 @@ public class ParkingBookingSystemClient implements ActionListener{
 
 		Time4.setFont(new Font("Arial", Font.PLAIN, 15));
 		Time4.setSelected(false);
-		Time4.setBounds(530, 300, 100, 70);
+		Time4.setBounds(410, 300, 100, 70);
 		Time4.setOpaque(true);
 		Time4.setContentAreaFilled(true);
 		Time4.setBorderPainted(false);
@@ -465,7 +465,7 @@ public class ParkingBookingSystemClient implements ActionListener{
 		
 		Time5.setFont(new Font("Arial", Font.PLAIN, 15));
 		Time5.setSelected(false);
-		Time5.setBounds(650, 300, 100, 70);
+		Time5.setBounds(530, 300, 100, 70);
 		Time5.setOpaque(true);
 		Time5.setContentAreaFilled(true);
 		Time5.setBorderPainted(false);
@@ -477,7 +477,7 @@ public class ParkingBookingSystemClient implements ActionListener{
 
 		Time6.setFont(new Font("Arial", Font.PLAIN, 15));
 		Time6.setSelected(false);
-		Time6.setBounds(770, 300, 100, 70);
+		Time6.setBounds(650, 300, 100, 70);
 		Time6.setOpaque(true);
 		Time6.setContentAreaFilled(true);
 		Time6.setBorderPainted(false);
@@ -489,7 +489,7 @@ public class ParkingBookingSystemClient implements ActionListener{
 
 		Time7.setFont(new Font("Arial", Font.PLAIN, 15));
 		Time7.setSelected(false);
-		Time7.setBounds(170, 300, 100, 70);
+		Time7.setBounds(770, 300, 100, 70);
 		Time7.setOpaque(true);
 		Time7.setContentAreaFilled(true);
 		Time7.setBorderPainted(false);
@@ -536,12 +536,13 @@ public class ParkingBookingSystemClient implements ActionListener{
 		bg5.add(Time6);
 		bg5.add(Time7);
 		Time1.setActionCommand("1");
-		Time7.setActionCommand("2"); 
-		Time2.setActionCommand("3"); 
-		Time3.setActionCommand("4"); 
-		Time4.setActionCommand("5"); 
-		Time5.setActionCommand("6"); 
-		Time6.setActionCommand("7"); 
+		Time2.setActionCommand("2"); 
+		Time3.setActionCommand("3"); 
+		Time4.setActionCommand("4"); 
+		Time5.setActionCommand("5"); 
+		Time6.setActionCommand("6");
+		Time7.setActionCommand("7"); 
+
 		
 //		JToggleButton Time1 = new JToggleButton("1 Hour");
 //		JToggleButton Time7 = new JToggleButton("2 Hours"); 
@@ -962,7 +963,12 @@ public class ParkingBookingSystemClient implements ActionListener{
 		Client student = clientFactory.createClient("bob@no.com","student", "123", "awxj049");
 		System.out.println(student.getName());
 
-		//		ParkingSpace p = new ParkingSpace(parking, s);
+		ParkingLot parking = new ParkingLot();
+//		Sensor s = new Sensor();
+//		ParkingSpace p = new ParkingSpace(parking, s);
+		
+		Booking booking = new Booking(null, null, 10);
+		
 		//		ParkingSpace z = new ParkingSpace(parking, s);
 		//		ParkingSpace c = new ParkingSpace(parking, s);
 		//		ParkingSpace d = new ParkingSpace(parking, s);
