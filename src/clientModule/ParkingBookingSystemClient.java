@@ -4,7 +4,7 @@ package clientModule;
 import java.awt.*;
 import javax.swing.*;
 
-
+import helperModule.clientFactory;
 import parkingBookingModule.Booking;
 import parkingBookingModule.BookingSystem;
 import parkingBookingModule.ParkingLot;
@@ -200,8 +200,8 @@ public class ParkingBookingSystemClient {
 		// client chooses one 
 		// on event click then call client.bookParkingSpace
 		
-		
-	
+		Client bob = clientFactory.createClient("bob","bob@no.com", "123", "awxj049" );
+		System.out.println(bob.getEmail());
  
 
 //		ParkingSpace p = new ParkingSpace(parking, s);
