@@ -6,7 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
-import helperModule.clientFactory;
+
 import parkingBookingModule.Booking;
 import parkingBookingModule.BookingSystem;
 import parkingBookingModule.ParkingLot;
@@ -56,6 +56,14 @@ public class ParkingBookingSystemClient implements ActionListener{
 	JToggleButton time2 = new JToggleButton("2 Hours"); 
 	JToggleButton time3 = new JToggleButton("3 Hours"); 
 	JToggleButton time4 = new JToggleButton("4 Hours");
+	
+	JToggleButton Time1 = new JToggleButton("1 Hour");
+	JToggleButton Time7 = new JToggleButton("2 Hours"); 
+	JToggleButton Time2 = new JToggleButton("3 Hours"); 
+	JToggleButton Time3 = new JToggleButton("4 Hours"); 
+	JToggleButton Time4 = new JToggleButton("5 Hours");
+	JToggleButton Time5 = new JToggleButton("6 Hours"); 
+	JToggleButton Time6 = new JToggleButton("7 Hours"); 
 
 
 	JToggleButton Spot1 = new JToggleButton("Spot A1"); 
@@ -341,10 +349,102 @@ public class ParkingBookingSystemClient implements ActionListener{
 		Spot6.addActionListener(this);
 		c3.add(Spot6);
 
+		JLabel Hours = new JLabel("How many hours would you like to book?");
+		Hours.setFont(new Font("Arial", Font.PLAIN, 25));
+		Hours.setSize(730, 30);
+		Hours.setLocation(100, 250);
+		Hours.setForeground(Color.BLACK);
+		c3.add(Hours);
+		
+		Time1.setFont(new Font("Arial", Font.PLAIN, 15));
+		Time1.setSelected(false);
+		Time1.setBounds(50, 300, 100, 70);
+		Time1.setOpaque(true);
+		Time1.setContentAreaFilled(true);
+		Time1.setBorderPainted(false);
+		Time1.setFocusPainted(false);
+		Time1.setBackground(new java.awt.Color(214, 207, 202));
+		Time1.setForeground(new java.awt.Color(129, 0, 1));
+		Time1.addActionListener(this);
+		c3.add(Time1);
+
+		Time2.setFont(new Font("Arial", Font.PLAIN, 15));
+		Time2.setSelected(false);
+		Time2.setBounds(290, 300, 100, 70);
+		Time2.setOpaque(true);
+		Time2.setContentAreaFilled(true);
+		Time2.setBorderPainted(false);
+		Time2.setFocusPainted(false);
+		Time2.setBackground(new java.awt.Color(214, 207, 202));
+		Time2.setForeground(new java.awt.Color(129, 0, 1));
+		Time2.addActionListener(this);
+		c3.add(Time2);
+
+		Time3.setFont(new Font("Arial", Font.PLAIN, 15));
+		Time3.setSelected(false);
+		Time3.setBounds(410, 300, 100, 70);
+		Time3.setOpaque(true);
+		Time3.setContentAreaFilled(true);
+		Time3.setBorderPainted(false);
+		Time3.setFocusPainted(false);
+		Time3.setBackground(new java.awt.Color(214, 207, 202));
+		Time3.setForeground(new java.awt.Color(129, 0, 1));
+		Time3.addActionListener(this);
+		c3.add(Time3);
+
+		Time4.setFont(new Font("Arial", Font.PLAIN, 15));
+		Time4.setSelected(false);
+		Time4.setBounds(530, 300, 100, 70);
+		Time4.setOpaque(true);
+		Time4.setContentAreaFilled(true);
+		Time4.setBorderPainted(false);
+		Time4.setFocusPainted(false);
+		Time4.setBackground(new java.awt.Color(214, 207, 202));
+		Time4.setForeground(new java.awt.Color(129, 0, 1));
+		Time4.addActionListener(this);
+		c3.add(Time4);
+		
+		Time5.setFont(new Font("Arial", Font.PLAIN, 15));
+		Time5.setSelected(false);
+		Time5.setBounds(650, 300, 100, 70);
+		Time5.setOpaque(true);
+		Time5.setContentAreaFilled(true);
+		Time5.setBorderPainted(false);
+		Time5.setFocusPainted(false);
+		Time5.setBackground(new java.awt.Color(214, 207, 202));
+		Time5.setForeground(new java.awt.Color(129, 0, 1));
+		Time5.addActionListener(this);
+		c3.add(Time5);
+
+		Time6.setFont(new Font("Arial", Font.PLAIN, 15));
+		Time6.setSelected(false);
+		Time6.setBounds(770, 300, 100, 70);
+		Time6.setOpaque(true);
+		Time6.setContentAreaFilled(true);
+		Time6.setBorderPainted(false);
+		Time6.setFocusPainted(false);
+		Time6.setBackground(new java.awt.Color(214, 207, 202));
+		Time6.setForeground(new java.awt.Color(129, 0, 1));
+		Time6.addActionListener(this);
+		c3.add(Time6);
+
+		Time7.setFont(new Font("Arial", Font.PLAIN, 15));
+		Time7.setSelected(false);
+		Time7.setBounds(170, 300, 100, 70);
+		Time7.setOpaque(true);
+		Time7.setContentAreaFilled(true);
+		Time7.setBorderPainted(false);
+		Time7.setFocusPainted(false);
+		Time7.setBackground(new java.awt.Color(214, 207, 202));
+		Time7.setForeground(new java.awt.Color(129, 0, 1));
+		Time7.addActionListener(this);
+		c3.add(Time7);
+
+
 
 		// book button
 		Book.setFont(new Font("Arial", Font.PLAIN, 15));
-		Book.setBounds(290, 300, 300, 50);
+		Book.setBounds(290, 450, 300, 50);
 		Book.setOpaque(true);
 		Book.setContentAreaFilled(true);
 		Book.setBorderPainted(false);
@@ -361,6 +461,16 @@ public class ParkingBookingSystemClient implements ActionListener{
 		bg2.add(Spot4);
 		bg2.add(Spot5);
 		bg2.add(Spot6);
+		
+		ButtonGroup bg5 = new ButtonGroup();
+		bg5.add(Time1);
+		bg5.add(Time2);
+		bg5.add(Time3);
+		bg5.add(Time4);
+		bg5.add(Time5);
+		bg5.add(Time6);
+		bg5.add(Time7);
+
 
 
 		/////////////////////////// FRAME 4 (Menu) ///////////////////////////////////////////
@@ -706,7 +816,7 @@ public class ParkingBookingSystemClient implements ActionListener{
 	public static void main(String[] args) {
 
 
-//		new ParkingBookingSystemClient();
+		new ParkingBookingSystemClient();
 
 
 		// Account constructor takes email then name then password..etc
@@ -743,22 +853,16 @@ public class ParkingBookingSystemClient implements ActionListener{
 
 		manager.addParkingLot();
 
-		
-		
-		// display these spaces in gui
-		System.out.println(student1.getAvailableSpaces().size());
-
-
 
 		// display these spaces in GUI
 		System.out.println(student1.getAvailableSpaces());
 
 		
 		//student1.bookParkingSpace(student1.getAvailableSpaces().get(0), 10);
-		System.out.println(prof1.getAvailableSpaces().size());
-		prof1.bookParkingSpace(prof1.getAvailableSpaces().get(0), 10);
+		//System.out.println(prof1.getAvailableSpaces().size());
+		prof1.bookParkingSpace(prof1.getAvailableSpaces().get(1), 10);
 		
-		System.out.println(prof1.getAvailableSpaces().size());
+		
 	
 		
 //		prof1.bookParkingSpace(prof1.getAvailableSpaces().get(1), 10);
@@ -767,10 +871,6 @@ public class ParkingBookingSystemClient implements ActionListener{
 	
 		// client chooses one 
 		// on event click then call client.bookParkingSpace
-		
-		Client bob = clientFactory.createClient("bob","bob@no.com", "123", "awxj049" );
-		System.out.println(bob.getEmail());
- 
 
 		//		ParkingSpace p = new ParkingSpace(parking, s);
 		//		ParkingSpace z = new ParkingSpace(parking, s);
