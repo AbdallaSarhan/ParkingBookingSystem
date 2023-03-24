@@ -2,6 +2,8 @@ package clientModule;
 
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.*;
 
 
@@ -14,152 +16,711 @@ import userModule.*;
 
 
 
-public class ParkingBookingSystemClient {
-	
-	
+public class ParkingBookingSystemClient implements ActionListener{
 
-	  
-	
+
+	// Default
+	JFrame frame1 = new JFrame();
+	JFrame frame2 = new JFrame();
+	JFrame frame3 = new JFrame();
+	JFrame frame4 = new JFrame();
+	JFrame frame5 = new JFrame();
+	JFrame frame6 = new JFrame();
+	JFrame frame7 = new JFrame();
+	JFrame frame8 = new JFrame();
+
+
+	JButton register = new JButton("Register");
+	JButton Login = new JButton("Login");
+	JButton Book = new JButton("Book");
+	JButton Extend = new JButton("Extend");
+	JButton Pay2 = new JButton("Choose Payment type");
+	JButton Pay = new JButton("Pay");
+	JButton Cancel = new JButton("Cancel");
+	JButton Cancel2 = new JButton("Cancel");
+	JButton Choose = new JButton("Choose Extended hours");
+
+
+	JToggleButton student = new JToggleButton("Student");
+	JToggleButton fm = new JToggleButton("Faculty Member");
+	JToggleButton nfs = new JToggleButton("Non-faculty Staff");
+	JToggleButton v = new JToggleButton("Visitor");
+
+
+	JToggleButton credit = new JToggleButton("Credit");
+	JToggleButton debit = new JToggleButton("Debit");
+	JToggleButton mobile = new JToggleButton("Mobile");
+
+
+	JToggleButton time1 = new JToggleButton("1 Hour"); 
+	JToggleButton time2 = new JToggleButton("2 Hours"); 
+	JToggleButton time3 = new JToggleButton("3 Hours"); 
+	JToggleButton time4 = new JToggleButton("4 Hours");
+
+
+	JToggleButton Spot1 = new JToggleButton("Spot A1"); 
+	JToggleButton Spot2 = new JToggleButton("Spot B1"); 
+	JToggleButton Spot3 = new JToggleButton("Spot C1"); 
+	JToggleButton Spot4 = new JToggleButton("Spot D1"); 
+	JToggleButton Spot5 = new JToggleButton("Spot E1"); 
+	JToggleButton Spot6 = new JToggleButton("Spot F1"); 
+
+
+
 	public ParkingBookingSystemClient() {
-	
-//		
-//		// text area
-//		JTextArea welcomeText = new JTextArea("Yorku Parking Booking system", 1, 5);
-//		welcomeText.setFont(new Font("Serif", Font.BOLD, 30));
-//		welcomeText.setBackground(Color.RED);
-//		welcomeText.setEditable(false);
-//		
-//		// text field and labels
-//
-//		
-//		
-//		// Button
-//		JButton login_button = new JButton("Login");
-//		JButton register_button = new JButton("Register");
-//			
-//		
-//		// Panel
-//		JPanel authentication_buttons_panel = new JPanel();
-//		authentication_buttons_panel.add(login_button);
-//		authentication_buttons_panel.add(register_button);
-		
 
-		 // Default
-		JFrame frame = new JFrame();
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setBounds(300, 90, 900, 600);
-		frame.setTitle("Yorku Parking Booking System");
 
-        frame.setResizable(false);
- 
-        Container c = frame.getContentPane();
-        c.setLayout(null);
- 
-        JLabel title = new JLabel("York Parking Booking");
-        title.setFont(new Font("Arial", Font.BOLD, 25));
-        title.setSize(300, 30);
-        title.setLocation(300, 30);
-        title.setBackground(Color.red);
-        c.add(title);
- 
-        JLabel name = new JLabel("Name");
-        name.setFont(new Font("Arial", Font.PLAIN, 20));
-        name.setSize(100, 20);
-        name.setLocation(100, 100);
-        c.add(name);
- 
-        JTextField tname = new JTextField();
-        tname.setFont(new Font("Arial", Font.PLAIN, 15));
-        tname.setSize(190, 20);
-        tname.setLocation(200, 100);
-        c.add(tname);
- 
-        JLabel pass = new JLabel("Password");
-        pass.setFont(new Font("Arial", Font.PLAIN, 20));
-        pass.setSize(100, 20);
-        pass.setLocation(100, 150);
-        c.add(pass);
- 
-        JTextField tpass = new JTextField();
-        tpass.setFont(new Font("Arial", Font.PLAIN, 15));
-        tpass.setSize(190, 20);
-        tpass.setLocation(200, 150);
-        c.add(tpass);
- 
-        JLabel client = new JLabel("Client");
-        client.setFont(new Font("Arial", Font.PLAIN, 20));
-        client.setSize(100, 20);
-        client.setLocation(100, 200);
-        c.add(client);
- 
-        JRadioButton student = new JRadioButton("Student");
-        student.setFont(new Font("Arial", Font.PLAIN, 15));
-        student.setSelected(true);
-        student.setSize(120, 20);
-        student.setLocation(175, 200);
-        c.add(student);
- 
-        JRadioButton fm = new JRadioButton("Faculty Member");
-        fm.setFont(new Font("Arial", Font.PLAIN, 15));
-        fm.setSelected(false);
-        fm.setSize(125, 20);
-        fm.setLocation(250, 200);
-        c.add(fm);
-        
-        JRadioButton nfs = new JRadioButton("NF staff");
-        nfs.setFont(new Font("Arial", Font.PLAIN, 15));
-        nfs.setSelected(false);
-        nfs.setSize(120, 20);
-        nfs.setLocation(350, 200);
-        c.add(nfs);
- 
-        JRadioButton v = new JRadioButton("Visitor");
-        v.setFont(new Font("Arial", Font.PLAIN, 15));
-        v.setSelected(false);
-        v.setSize(120, 20);
-        v.setLocation(425, 200);
-        c.add(v);
- 
-        ButtonGroup bg = new ButtonGroup();
-        bg.add(student);
-        bg.add(fm);
-        bg.add(nfs);
-        bg.add(v);
- 
-        JButton register = new JButton("Register");
-        register.setFont(new Font("Arial", Font.PLAIN, 15));
-        register.setSize(100, 20);
-        register.setLocation(150, 450);
-//        sub.addActionListener(this);
-        c.add(register);
- 
+		/////////////////////////// FRAME 1 (Registration) ///////////////////////////////////////////
 
- 
-     
-        frame.setVisible(true);
-			
+
+		frame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame1.setBounds(300, 90, 900, 600);
+		frame1.setTitle("Yorku Parking Booking System");
+
+		frame1.setResizable(false);
+
+		Container c = frame1.getContentPane();
+		c.setLayout(null);
+		frame1.getContentPane().setBackground(new java.awt.Color(227, 24, 55));
+
+		JLabel title = new JLabel("Account Registeration");
+		title.setFont(new Font("Arial", Font.BOLD, 25));
+		title.setSize(300, 30);
+		title.setLocation(300, 30);
+		title.setBackground(Color.red);
+		c.add(title);
+
+		JLabel name = new JLabel("Name:");
+		name.setFont(new Font("Arial", Font.PLAIN, 20));
+		name.setSize(100, 20);
+		name.setLocation(300, 100);
+		c.add(name);
+
+		JTextField tname = new JTextField();
+		tname.setFont(new Font("Arial", Font.PLAIN, 15));
+		tname.setSize(190, 20);
+		tname.setLocation(366, 100);
+		c.add(tname);
+
+		JLabel pass = new JLabel("Password:");
+		pass.setFont(new Font("Arial", Font.PLAIN, 20));
+		pass.setSize(100, 20);
+		pass.setLocation(265, 150);
+		c.add(pass);
+
+		JTextField tpass = new JTextField();
+		tpass.setFont(new Font("Arial", Font.PLAIN, 15));
+		tpass.setSize(190, 20);
+		tpass.setLocation(366, 150);
+		c.add(tpass);
+
+		JLabel client = new JLabel("Client:");
+		client.setFont(new Font("Arial", Font.PLAIN, 20));
+		client.setSize(100, 20);
+		client.setLocation(85, 250);
+		c.add(client);
+
+		// JButton student = new JButton("Student");
+		student.setFont(new Font("Arial", Font.PLAIN, 15));
+		student.setSelected(false);
+		student.setBounds(150, 230, 150, 70);
+		student.setOpaque(true);
+		student.setContentAreaFilled(true);
+		student.setBorderPainted(false);
+		student.setFocusPainted(false);
+		student.setBackground(new java.awt.Color(214, 207, 202));
+		student.setForeground(new java.awt.Color(129, 0, 1));
+		student.addActionListener(this);
+		c.add(student);
+
+		// JButton fm = new JButton("Faculty Member");
+		fm.setFont(new Font("Arial", Font.PLAIN, 15));
+		fm.setSelected(false);
+		fm.setBounds(310, 230, 150, 70);
+		fm.setOpaque(true);
+		fm.setContentAreaFilled(true);
+		fm.setBorderPainted(false);
+		fm.setFocusPainted(false);
+		fm.setBackground(new java.awt.Color(214, 207, 202));
+		fm.setForeground(new java.awt.Color(129, 0, 1));
+		fm.addActionListener(this);
+		c.add(fm);
+
+		//  JButton nfs = new JButton("NF staff");
+		nfs.setFont(new Font("Arial", Font.PLAIN, 15));
+		nfs.setSelected(false);
+		nfs.setBounds(470, 230, 200, 70);
+		nfs.setOpaque(true);
+		nfs.setContentAreaFilled(true);
+		nfs.setBorderPainted(false);
+		nfs.setFocusPainted(false);
+		nfs.setBackground(new java.awt.Color(214, 207, 202));
+		nfs.setForeground(new java.awt.Color(129, 0, 1));
+		nfs.addActionListener(this);
+		c.add(nfs);
+
+		//   JButton v = new JButton("Visitor");
+		v.setFont(new Font("Arial", Font.PLAIN, 15));
+		v.setSelected(false);
+		v.setBounds(680, 230, 150, 70);
+		v.setOpaque(true);
+		v.setContentAreaFilled(true);
+		v.setBorderPainted(false);
+		v.setFocusPainted(false);
+		v.setBackground(new java.awt.Color(214, 207, 202));
+		v.setForeground(new java.awt.Color(129, 0, 1));
+		v.addActionListener(this);
+		c.add(v);
+
+		// register button
+		register.setFont(new Font("Arial", Font.BOLD, 15));
+		register.setBounds(300, 380, 300, 70);
+		register.setOpaque(true);
+		register.setContentAreaFilled(true);
+		register.setBorderPainted(false);
+		register.setFocusPainted(false);
+		register.setBackground(new java.awt.Color(214, 207, 202));
+		register.setForeground(new java.awt.Color(129, 0, 1));
+		register.addActionListener(this);
+		c.add(register);
+
+		ButtonGroup bg = new ButtonGroup();
+		bg.add(student);
+		bg.add(fm);
+		bg.add(nfs);
+		bg.add(v);
+
+
+
+		/////////////////////////// FRAME 2 (LOGIN) ///////////////////////////////////////////
+
+
+		frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame2.setBounds(300, 90, 900, 600);
+		frame2.setTitle("Yorku Parking Booking System");
+
+		frame2.setResizable(false);
+		Container c2 = frame2.getContentPane();
+		c2.setLayout(null);
+		frame2.getContentPane().setBackground(new java.awt.Color(227, 24, 55));
+
+
+		JLabel title2 = new JLabel("Login");
+		title2.setFont(new Font("Arial", Font.BOLD, 25));
+		title2.setSize(330, 30);
+		title2.setLocation(410, 140);
+		c2.add(title2);
+
+		JLabel name2 = new JLabel("Name:");
+		name2.setFont(new Font("Arial", Font.PLAIN, 20));
+		name2.setSize(100, 20);
+		name2.setLocation(300, 200);
+		c2.add(name2);
+
+		JTextField tname2 = new JTextField();
+		tname2.setFont(new Font("Arial", Font.PLAIN, 15));
+		tname2.setSize(190, 20);
+		tname2.setLocation(366, 200);
+		c2.add(tname2);
+
+		JLabel pass2 = new JLabel("Password:");
+		pass2.setFont(new Font("Arial", Font.PLAIN, 20));
+		pass2.setSize(100, 20);
+		pass2.setLocation(265, 250);
+		c2.add(pass2);
+
+		JTextField tpass2 = new JTextField();
+		tpass2.setFont(new Font("Arial", Font.PLAIN, 15));
+		tpass2.setSize(190, 20);
+		tpass2.setLocation(366, 250);
+		c2.add(tpass2);
+
+
+
+		Login.setFont(new Font("Arial", Font.PLAIN, 15));
+		Login.setBounds(390, 300, 120, 70);
+		Login.setOpaque(true);
+		Login.setContentAreaFilled(true);
+		Login.setBorderPainted(false);
+		Login.setFocusPainted(false);
+		Login.setBackground(new java.awt.Color(214, 207, 202));
+		Login.setForeground(new java.awt.Color(129, 0, 1));
+		Login.addActionListener(this);
+		c2.add(Login);
+
+
+		/////////////////////////// FRAME 3 (SPOT SELECTION) ///////////////////////////////////////////
+
+
+		frame3.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame3.setBounds(300, 90, 900, 600);
+		frame3.setTitle("Yorku Parking Booking System");
+
+		frame3.setResizable(false);
+		Container c3 = frame3.getContentPane();
+		c3.setLayout(null);
+		frame3.getContentPane().setBackground(new java.awt.Color(227, 24, 55));
+
+
+		JLabel title3 = new JLabel("Book A Spot");
+		title3.setFont(new Font("Arial", Font.BOLD, 25));
+		title3.setSize(300, 30);
+		title3.setLocation(370, 80);
+		title3.setBackground(Color.red);
+		c3.add(title3);
+
+		Spot1.setFont(new Font("Arial", Font.PLAIN, 15));
+		Spot1.setSelected(false);
+		Spot1.setBounds(100, 150, 100, 70);
+		Spot1.setOpaque(true);
+		Spot1.setContentAreaFilled(true);
+		Spot1.setBorderPainted(false);
+		Spot1.setFocusPainted(false);
+		Spot1.setBackground(new java.awt.Color(214, 207, 202));
+		Spot1.setForeground(new java.awt.Color(129, 0, 1));
+		Spot1.addActionListener(this);
+		c3.add(Spot1);
+
+		Spot2.setFont(new Font("Arial", Font.PLAIN, 15));
+		Spot2.setSelected(false);
+		Spot2.setBounds(220, 150, 100, 70);
+		Spot2.setOpaque(true);
+		Spot2.setContentAreaFilled(true);
+		Spot2.setBorderPainted(false);
+		Spot2.setFocusPainted(false);
+		Spot2.setBackground(new java.awt.Color(214, 207, 202));
+		Spot2.setForeground(new java.awt.Color(129, 0, 1));
+		Spot2.addActionListener(this);
+		c3.add(Spot2);
+
+		Spot3.setFont(new Font("Arial", Font.PLAIN, 15));
+		Spot3.setSelected(false);
+		Spot3.setBounds(340, 150, 100, 70);
+		Spot3.setOpaque(true);
+		Spot3.setContentAreaFilled(true);
+		Spot3.setBorderPainted(false);
+		Spot3.setFocusPainted(false);
+		Spot3.setBackground(new java.awt.Color(214, 207, 202));
+		Spot3.setForeground(new java.awt.Color(129, 0, 1));
+		Spot3.addActionListener(this);
+		c3.add(Spot3);
+
+		Spot4.setFont(new Font("Arial", Font.PLAIN, 15));
+		Spot4.setSelected(false);
+		Spot4.setBounds(460, 150, 100, 70);
+		Spot4.setOpaque(true);
+		Spot4.setContentAreaFilled(true);
+		Spot4.setBorderPainted(false);
+		Spot4.setFocusPainted(false);
+		Spot4.setBackground(new java.awt.Color(214, 207, 202));
+		Spot4.setForeground(new java.awt.Color(129, 0, 1));
+		Spot4.addActionListener(this);
+		c3.add(Spot4);
+
+		Spot5.setFont(new Font("Arial", Font.PLAIN, 15));
+		Spot5.setSelected(false);
+		Spot5.setBounds(580, 150, 100, 70);
+		Spot5.setOpaque(true);
+		Spot5.setContentAreaFilled(true);
+		Spot5.setBorderPainted(false);
+		Spot5.setFocusPainted(false);
+		Spot5.setBackground(new java.awt.Color(214, 207, 202));
+		Spot5.setForeground(new java.awt.Color(129, 0, 1));
+		Spot5.addActionListener(this);
+		c3.add(Spot5);
+
+		Spot6.setFont(new Font("Arial", Font.PLAIN, 15));
+		Spot6.setSelected(false);
+		Spot6.setBounds(700, 150, 100, 70);
+		Spot6.setOpaque(true);
+		Spot6.setContentAreaFilled(true);
+		Spot6.setBorderPainted(false);
+		Spot6.setFocusPainted(false);
+		Spot6.setBackground(new java.awt.Color(214, 207, 202));
+		Spot6.setForeground(new java.awt.Color(129, 0, 1));
+		Spot6.addActionListener(this);
+		c3.add(Spot6);
+
+
+		// book button
+		Book.setFont(new Font("Arial", Font.PLAIN, 15));
+		Book.setBounds(290, 300, 300, 50);
+		Book.setOpaque(true);
+		Book.setContentAreaFilled(true);
+		Book.setBorderPainted(false);
+		Book.setFocusPainted(false);
+		Book.setBackground(new java.awt.Color(214, 207, 202));
+		Book.setForeground(new java.awt.Color(129, 0, 1));
+		Book.addActionListener(this);
+		c3.add(Book);
+
+		ButtonGroup bg2 = new ButtonGroup();
+		bg2.add(Spot1);
+		bg2.add(Spot2);
+		bg2.add(Spot3);
+		bg2.add(Spot4);
+		bg2.add(Spot5);
+		bg2.add(Spot6);
+
+
+		/////////////////////////// FRAME 4 (Menu) ///////////////////////////////////////////
+
+
+		frame4.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame4.setBounds(300, 90, 900, 600);
+		frame4.setTitle("Yorku Parking Booking System");
+
+		frame4.setResizable(false);
+		Container c4 = frame4.getContentPane();
+		c4.setLayout(null);
+		frame4.getContentPane().setBackground(new java.awt.Color(227, 24, 55));
+
+
+		JLabel title4 = new JLabel("Menu");
+		title4.setFont(new Font("Arial", Font.BOLD, 25));
+		title4.setSize(300, 30);
+		title4.setLocation(440, 60);
+		title4.setBackground(Color.red);
+		c4.add(title4);
+
+		JLabel Price = new JLabel("You have booked Spot D2 for 5 hours, you will be charged $40");
+		Price.setFont(new Font("Arial", Font.ITALIC, 25));
+		Price.setSize(730, 30);
+		Price.setLocation(100, 100);
+		Price.setForeground(Color.BLACK);
+		c4.add(Price);
+
+		Pay.setFont(new Font("Arial", Font.PLAIN, 15));
+		Pay.setBounds(320, 160, 300, 50);
+		Pay.setOpaque(true);
+		Pay.setContentAreaFilled(true);
+		Pay.setBorderPainted(false);
+		Pay.setFocusPainted(false);
+		Pay.setBackground(new java.awt.Color(214, 207, 202));
+		Pay.setForeground(new java.awt.Color(129, 0, 1));
+		Pay.addActionListener(this);
+		c4.add(Pay);
+
+		Extend.setFont(new Font("Arial", Font.PLAIN, 15));
+		Extend.setBounds(320, 250, 300, 50);
+		Extend.setOpaque(true);
+		Extend.setContentAreaFilled(true);
+		Extend.setBorderPainted(false);
+		Extend.setFocusPainted(false);
+		Extend.setBackground(new java.awt.Color(214, 207, 202));
+		Extend.setForeground(new java.awt.Color(129, 0, 1));
+		Extend.addActionListener(this);
+		c4.add(Extend);
+
+		Cancel.setFont(new Font("Arial", Font.PLAIN, 15));
+		Cancel.setBounds(320, 330, 300, 50);
+		Cancel.setOpaque(true);
+		Cancel.setContentAreaFilled(true);
+		Cancel.setBorderPainted(false);
+		Cancel.setFocusPainted(false);
+		Cancel.setBackground(new java.awt.Color(214, 207, 202));
+		Cancel.setForeground(new java.awt.Color(129, 0, 1));
+		Cancel.addActionListener(this);
+		c4.add(Cancel);
+
+
+
+		/////////////////////////// FRAME 5 (BILLING) ///////////////////////////////////////////
+
+
+		frame5.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame5.setBounds(300, 90, 900, 600);
+		frame5.setTitle("Yorku Parking Booking System");
+
+		frame5.setResizable(false);
+		Container c5 = frame5.getContentPane();
+		c5.setLayout(null);
+		frame5.getContentPane().setBackground(new java.awt.Color(227, 24, 55));
+
+
+		JLabel title5 = new JLabel("Thank you! Your spot is booked!");
+		title5.setFont(new Font("Arial", Font.BOLD, 25));
+		title5.setSize(500, 30);
+		title5.setLocation(220, 80);
+		c5.add(title5);
+
+
+		JLabel DOP = new JLabel("Date of purchase:                   2023/01/24");
+		DOP.setFont(new Font("Arial", Font.ITALIC, 25));
+		DOP.setSize(730, 30);
+		DOP.setLocation(100, 150);
+		DOP.setForeground(Color.BLACK);
+		c5.add(DOP);
+
+		JLabel booked = new JLabel("you have booked for:              5 Hours");
+		booked.setFont(new Font("Arial", Font.ITALIC, 25));
+		booked.setSize(730, 30);
+		booked.setLocation(100, 190);
+		booked.setForeground(Color.BLACK);
+		c5.add(booked);
+
+		JLabel hoursbooked = new JLabel("you have booked spot:           D1");
+		hoursbooked.setFont(new Font("Arial", Font.ITALIC, 25));
+		hoursbooked.setSize(730, 30);
+		hoursbooked.setLocation(100, 310);
+		hoursbooked.setForeground(Color.BLACK);
+		c5.add(hoursbooked);
+
+		JLabel moneypaid = new JLabel("you have been charged:        $45");
+		moneypaid.setFont(new Font("Arial", Font.ITALIC, 25));
+		moneypaid.setSize(730, 30);
+		moneypaid.setLocation(100, 230);
+		moneypaid.setForeground(Color.BLACK);
+		c5.add(moneypaid);
+
+		JLabel licensePlate = new JLabel("License Plate:                        BKRW 134");
+		licensePlate.setFont(new Font("Arial", Font.ITALIC, 25));
+		licensePlate.setSize(730, 30);
+		licensePlate.setLocation(100, 270);
+		licensePlate.setForeground(Color.BLACK);
+		c5.add(licensePlate);
+
+
+		/////////////////////////// FRAME 6 (Choose Payment type) ///////////////////////////////////////////
+
+
+		frame6.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame6.setBounds(300, 90, 900, 600);
+		frame6.setTitle("Yorku Parking Booking System");
+
+		frame6.setResizable(false);
+		Container c6 = frame6.getContentPane();
+		c6.setLayout(null);
+		frame6.getContentPane().setBackground(new java.awt.Color(227, 24, 55));
+
+		JLabel Price2 = new JLabel("You have booked Spot D2 for 5 hours, you will be charged $40");
+		Price2.setFont(new Font("Arial", Font.ITALIC, 25));
+		Price2.setSize(730, 30);
+		Price2.setLocation(100, 100);
+		Price2.setForeground(Color.BLACK);
+		c6.add(Price2);
+
+		//		JLabel Price3 = new JLabel("You have cancelled and will be charged for 1 hour, you will be charged $40");
+		//		Price3.setFont(new Font("Arial", Font.ITALIC, 25));
+		//		Price3.setSize(730, 30);
+		//		Price3.setLocation(100, 100);
+		//		Price3.setForeground(Color.BLACK);
+		//		c6.add(Price3);
+
+		JLabel title6 = new JLabel("How would you like to pay?"); 
+		title6.setFont(new Font("Arial", Font.BOLD, 25));
+		title6.setSize(500, 30);
+		title6.setLocation(340, 50);
+		c6.add(title6);
+
+		Pay2.setFont(new Font("Arial", Font.PLAIN, 15));
+		Pay2.setBounds(280, 450, 400, 50);
+		Pay2.setOpaque(true);
+		Pay2.setContentAreaFilled(true);
+		Pay2.setBorderPainted(false);
+		Pay2.setFocusPainted(false);
+		Pay2.setBackground(new java.awt.Color(214, 207, 202));
+		Pay2.setForeground(new java.awt.Color(129, 0, 1));
+		Pay2.addActionListener(this);
+		c6.add(Pay2);
+
+		credit.setFont(new Font("Arial", Font.PLAIN, 15));
+		credit.setBounds(320, 160, 300, 50);
+		credit.setOpaque(true);
+		credit.setContentAreaFilled(true);
+		credit.setBorderPainted(false);
+		credit.setFocusPainted(false);
+		credit.setBackground(new java.awt.Color(214, 207, 202));
+		credit.setForeground(new java.awt.Color(129, 0, 1));
+		credit.addActionListener(this);
+		c6.add(credit);
+
+		debit.setFont(new Font("Arial", Font.PLAIN, 15));
+		debit.setBounds(320, 240, 300, 50);
+		debit.setOpaque(true);
+		debit.setContentAreaFilled(true);
+		debit.setBorderPainted(false);
+		debit.setFocusPainted(false);
+		debit.setBackground(new java.awt.Color(214, 207, 202));
+		debit.setForeground(new java.awt.Color(129, 0, 1));
+		debit.addActionListener(this);
+		c6.add(debit);
+
+		mobile.setFont(new Font("Arial", Font.PLAIN, 15));
+		mobile.setBounds(320, 330, 300, 50);
+		mobile.setOpaque(true);
+		mobile.setContentAreaFilled(true);
+		mobile.setBorderPainted(false);
+		mobile.setFocusPainted(false);
+		mobile.setBackground(new java.awt.Color(214, 207, 202));
+		mobile.setForeground(new java.awt.Color(129, 0, 1));
+		mobile.addActionListener(this);
+		c6.add(mobile);
+
+		ButtonGroup bg3 = new ButtonGroup();
+		bg3.add(credit);
+		bg3.add(debit);
+		bg3.add(mobile);
+
+		/////////////////////////// FRAME 7 (Choose extension) ///////////////////////////////////////////
+
+
+		frame7.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame7.setBounds(300, 90, 900, 600);
+		frame7.setTitle("Yorku Parking Booking System");
+
+		frame7.setResizable(false);
+		Container c7 = frame7.getContentPane();
+		c7.setLayout(null);
+		frame7.getContentPane().setBackground(new java.awt.Color(227, 24, 55));
+
+
+		JLabel title7 = new JLabel("How many hours would you like to extend?");
+		title7.setFont(new Font("Arial", Font.BOLD, 25));
+		title7.setSize(600, 30);
+		title7.setLocation(200, 80);
+		c7.add(title7);
+
+		time1.setFont(new Font("Arial", Font.PLAIN, 15));
+		time1.setSelected(false);
+		time1.setBounds(200, 150, 100, 70);
+		time1.setOpaque(true);
+		time1.setContentAreaFilled(true);
+		time1.setBorderPainted(false);
+		time1.setFocusPainted(false);
+		time1.setBackground(new java.awt.Color(214, 207, 202));
+		time1.setForeground(new java.awt.Color(129, 0, 1));
+		time1.addActionListener(this);
+		c7.add(time1);
+
+		time2.setFont(new Font("Arial", Font.PLAIN, 15));
+		time2.setSelected(false);
+		time2.setBounds(320, 150, 100, 70);
+		time2.setOpaque(true);
+		time2.setContentAreaFilled(true);
+		time2.setBorderPainted(false);
+		time2.setFocusPainted(false);
+		time2.setBackground(new java.awt.Color(214, 207, 202));
+		time2.setForeground(new java.awt.Color(129, 0, 1));
+		time2.addActionListener(this);
+		c7.add(time2);
+
+		time3.setFont(new Font("Arial", Font.PLAIN, 15));
+		time3.setSelected(false);
+		time3.setBounds(440, 150, 100, 70);
+		time3.setOpaque(true);
+		time3.setContentAreaFilled(true);
+		time3.setBorderPainted(false);
+		time3.setFocusPainted(false);
+		time3.setBackground(new java.awt.Color(214, 207, 202));
+		time3.setForeground(new java.awt.Color(129, 0, 1));
+		time3.addActionListener(this);
+		c7.add(time3);
+
+		time4.setFont(new Font("Arial", Font.PLAIN, 15));
+		time4.setSelected(false);
+		time4.setBounds(560, 150, 100, 70);
+		time4.setOpaque(true);
+		time4.setContentAreaFilled(true);
+		time4.setBorderPainted(false);
+		time4.setFocusPainted(false);
+		time4.setBackground(new java.awt.Color(214, 207, 202));
+		time4.setForeground(new java.awt.Color(129, 0, 1));
+		time4.addActionListener(this);
+		c7.add(time4);
+
+
+		Choose.setFont(new Font("Arial", Font.PLAIN, 15));
+		Choose.setBounds(300, 300, 300, 50);
+		Choose.setOpaque(true);
+		Choose.setContentAreaFilled(true);
+		Choose.setBorderPainted(false);
+		Choose.setFocusPainted(false);
+		Choose.setBackground(new java.awt.Color(214, 207, 202));
+		Choose.setForeground(new java.awt.Color(129, 0, 1));
+		Choose.addActionListener(this);
+		c7.add(Choose);
+
+
+		ButtonGroup bg4 = new ButtonGroup();
+		bg4.add(time1);
+		bg4.add(time2);
+		bg4.add(time3);
+		bg4.add(time4);
+
+
+
+
+
+
+
+		frame7.setVisible(false);
+		frame6.setVisible(false);
+		frame5.setVisible(false);
+		frame4.setVisible(false);
+		frame3.setVisible(false);
+		frame2.setVisible(false);
+		frame1.setVisible(true);
+
 	}	
-	
 
-	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+
+		if(e.getSource() == register) {
+			frame2.setVisible(true);
+			frame1.dispose();
+		}
+		if (e.getSource() == Login) {
+			frame3.setVisible(true);
+			frame2.dispose();
+		}
+		if (e.getSource() == Book) {
+			frame4.setVisible(true);
+			frame3.dispose();
+		}
+		if (e.getSource() == Pay) {
+			frame6.setVisible(true);
+			frame4.dispose();
+		}
+		if (e.getSource() == Extend) {
+			frame7.setVisible(true);
+			frame4.dispose();	
+		}
+		if (e.getSource() == Choose) {
+			frame4.setVisible(true);
+			frame7.dispose();
+		}
+		if (e.getSource() == Cancel) {
+			frame6.setVisible(true);
+			frame4.dispose();
+		}
+		if (e.getSource() == Pay2) {
+			frame5.setVisible(true);
+			frame6.dispose();
+		}
+	}
+
+
+
 	public static void main(String[] args) {
-		
+
 
 //		new ParkingBookingSystemClient();
 
-		
+
 		// Account constructor takes email then name then password..etc
 		// This is to make sure that you can check name and password correctly when logging in
 		Student student1 = new Student("abdalla1@my.yorku.ca", "Abdalla", "AbdallaSSS128", "AB7C43");
 		SuperManager superManager = SuperManager.getInstance();
 		Manager manager = superManager.createManagementAccount("testManager@gmail.com", "manager1", "manager128");
-	
+
 		System.out.println(manager.isLoggedIn());
 		// need correct credentials to have loggedIn status;
 		manager.login("manager1", "manager128");
 		System.out.println(manager.isLoggedIn());
 		System.out.println(manager.getTeam());
-		
+
 		// student must register before they can be verified
 		student1.register();
 		// All fields must not be blank to be verified
@@ -167,10 +728,10 @@ public class ParkingBookingSystemClient {
 		System.out.println(student1.isLoggedIn());
 		student1.login("Abdalla", "AbdallaSSS128");
 		System.out.println(student1.isLoggedIn());
-		
+
 		System.out.println(student1.getVerificationStatus());
 		System.out.println(student1.getRegistrationStatus());
-		
+
 		FacultyMember prof1 = new FacultyMember("mokhtar@eecs.ca", "Mokhtar", "Mokhtar128", "IA5CC3");
 		System.out.println(prof1.getVerificationStatus());
 		System.out.println(prof1.getRegistrationStatus());
@@ -179,12 +740,19 @@ public class ParkingBookingSystemClient {
 		manager.validateAccount(prof1);
 		prof1.login("Mokhtar", "Mokhtar128");
 		System.out.println(prof1.getVerificationStatus());
-		
+
 		manager.addParkingLot();
+
 		
 		
 		// display these spaces in gui
 		System.out.println(student1.getAvailableSpaces().size());
+
+
+
+		// display these spaces in GUI
+		System.out.println(student1.getAvailableSpaces());
+
 		
 		//student1.bookParkingSpace(student1.getAvailableSpaces().get(0), 10);
 		System.out.println(prof1.getAvailableSpaces().size());
@@ -195,63 +763,57 @@ public class ParkingBookingSystemClient {
 		
 //		prof1.bookParkingSpace(prof1.getAvailableSpaces().get(1), 10);
 		
-		System.out.println(prof1.pay("Debit"));
+	//	System.out.println(prof1.pay("Debit"));
 	
 		// client chooses one 
 		// on event click then call client.bookParkingSpace
-		
-		
-	
- 
 
-//		ParkingSpace p = new ParkingSpace(parking, s);
-//		ParkingSpace z = new ParkingSpace(parking, s);
-//		ParkingSpace c = new ParkingSpace(parking, s);
-//		ParkingSpace d = new ParkingSpace(parking, s);
-//		ParkingSpace e = new ParkingSpace(parking, s);
-//		ParkingSpace f = new ParkingSpace(parking, s);
-//		ParkingSpace g = new ParkingSpace(parking, s);
-//		
-//		ParkingSpace h = new ParkingSpace(parking, s);
-//		ParkingSpace i = new ParkingSpace(parking, s);
-//	
+		//		ParkingSpace p = new ParkingSpace(parking, s);
+		//		ParkingSpace z = new ParkingSpace(parking, s);
+		//		ParkingSpace c = new ParkingSpace(parking, s);
+		//		ParkingSpace d = new ParkingSpace(parking, s);
+		//		ParkingSpace e = new ParkingSpace(parking, s);
+		//		ParkingSpace f = new ParkingSpace(parking, s);
+		//		ParkingSpace g = new ParkingSpace(parking, s);
+		//		
+		//		ParkingSpace h = new ParkingSpace(parking, s);
+		//		ParkingSpace i = new ParkingSpace(parking, s);
+		//	
+		//
+		//		
+		//		ParkingSpace[] spaces = parking.getParkingSpaces();
+		//        parkingLot has an array of 100 null spaces
+		//		System.out.println(spaces);
+		//		
+		//		BookingSystem b = new BookingSystem();
+		//		Management m = new Management("test@gmail.com", "gunther", "123p");
+		//		m.enableParkingLot(parking);
+		//		System.out.println(parking.getStatus());
+		//		m.disableParkingLot(parking);
+		//		System.out.println(parking.getStatus());
+		//		m.enableParkingSpace(p);
+		//		System.out.println(p.getAvailability());
+		//		m.disableParkingSpace(p);
+		//		System.out.println(p.getAvailability());
+		//		m.addParkingLot(parking);
+		//		System.out.println(b.getParkingLots());
 
-//		
-//		ParkingSpace[] spaces = parking.getParkingSpaces();
-		// parkingLot has an array of 100 null spaces
-//		System.out.println(spaces);
-//		
-//		BookingSystem b = new BookingSystem();
-//		Management m = new Management("test@gmail.com", "gunther", "123p");
-//		m.enableParkingLot(parking);
-//		System.out.println(parking.getStatus());
-//		m.disableParkingLot(parking);
-//		System.out.println(parking.getStatus());
-//		m.enableParkingSpace(p);
-//		System.out.println(p.getAvailability());
-//		m.disableParkingSpace(p);
-//		System.out.println(p.getAvailability());
-//		m.addParkingLot(parking);
-//		System.out.println(b.getParkingLots());
-//		
 
-		
 
-		
-//		Booking booking = new Booking(parkspace, "BHCG167", 4);
-	
-//		System.out.println(booking.getStartDate());
-		
-//		System.out.println(p.getId());
-//		System.out.println(c.getId());
-//		System.out.println(d.getId());
-//		System.out.println(e.getId());
-//		System.out.println(f.getId());
-//		
-		
 
-		
+
+		//				ParkingSpace parkspace = new ParkingSpace(null, null);
+		//				Booking booking = new Booking(parkspace , "BHCG167", 4);
+		//
+		//				System.out.println(booking.getStartDate());
+
+		//		System.out.println(p.getId());
+		//		System.out.println(c.getId());
+		//		System.out.println(d.getId());
+		//		System.out.println(e.getId());
+		//		System.out.println(f.getId());
+		//	
+
 
 	}
-
 }
