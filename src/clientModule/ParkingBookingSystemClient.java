@@ -768,9 +768,8 @@ public class ParkingBookingSystemClient implements ActionListener{
 		// client chooses one 
 		// on event click then call client.bookParkingSpace
 		
-		Client bob = clientFactory.createClient("bob","bob@no.com", "123", "awxj049" );
-		System.out.println(bob.getEmail());
- 
+		Client student = clientFactory.createClient("student","bob@no.com", "123", "awxj049");
+		System.out.println(student.getName());
 
 		//		ParkingSpace p = new ParkingSpace(parking, s);
 		//		ParkingSpace z = new ParkingSpace(parking, s);
