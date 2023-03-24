@@ -51,7 +51,7 @@ public class BookingSystem implements Observer {
 			//requires the cost of an hour (of the type of a client) as the deposit
 			//client must provide valid licence plate number
 		
-		if (user.isLoggedIn() && user.getRegistrationStatus() == true && parkingSpace.isAvailable() == true) {
+		if (user.isLoggedIn() && user.isRegistered() && parkingSpace.isAvailable() == true) {
 			parkingSpace.book(user, hoursRequested);
 		
 			return new Booking(parkingSpace, user.getLicensePlate(), hoursRequested);

@@ -78,12 +78,13 @@ public class ParkingBookingSystemClient implements ActionListener{
 	Client user;
 
 
+	SuperManager superManager = SuperManager.getInstance();
+	Manager manager = superManager.createManagementAccount("manager@gmail.com", "manager", "manager");
 
 	public ParkingBookingSystemClient() {
-
-
+		
 		/////////////////////////// FRAME 1 (Registration) ///////////////////////////////////////////
-
+		
 
 		frame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame1.setBounds(300, 90, 900, 600);
@@ -113,6 +114,19 @@ public class ParkingBookingSystemClient implements ActionListener{
 		tname.setSize(190, 20);
 		tname.setLocation(366, 100);
 		c.add(tname);
+		
+
+		JLabel plate = new JLabel("Licence Plate:");
+		plate.setFont(new Font("Arial", Font.PLAIN, 20));
+		plate.setSize(300, 20);
+		plate.setLocation(235, 200);
+		c.add(plate);
+
+		JTextField tplate = new JTextField();
+		tplate.setFont(new Font("Arial", Font.PLAIN, 15));
+		tplate.setSize(190, 20);
+		tplate.setLocation(366, 200);
+		c.add(tplate);
 
 		JLabel mail = new JLabel("Email:");
 		mail.setFont(new Font("Arial", Font.PLAIN, 20));
@@ -126,17 +140,6 @@ public class ParkingBookingSystemClient implements ActionListener{
 		tmail.setLocation(366, 150);
 		c.add(tmail);
 		
-		JLabel plate = new JLabel("Licence Plate:");
-		plate.setFont(new Font("Arial", Font.PLAIN, 20));
-		plate.setSize(300, 20);
-		plate.setLocation(235, 200);
-		c.add(plate);
-
-		JTextField tplate = new JTextField();
-		tplate.setFont(new Font("Arial", Font.PLAIN, 15));
-		tplate.setSize(190, 20);
-		tplate.setLocation(366, 200);
-		c.add(tplate);
 
 		JLabel pass = new JLabel("Password:");
 		pass.setFont(new Font("Arial", Font.PLAIN, 20));
@@ -237,25 +240,19 @@ public class ParkingBookingSystemClient implements ActionListener{
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				super.mouseClicked(e);
-			
-				
-				
-				
-//				System.out.println(tname.getText());
-//				System.out.println(tpass.getText());
-//				System.out.println(bg.getSelection().getActionCommand());
-				
-				
-				
-				frame2.setVisible(true);
-				frame1.dispose();
-		
 
-				
+				user = clientFactory.createClient(bg.getSelection().getActionCommand(), tmail.getText(),tname.getText(), tpass.getText(), tplate.getText());
+				user.register();
+				manager.validateAccount(user);
+				if(user.isVerified()) {
+					frame2.setVisible(true);
+					frame1.dispose();
+				}
+
 			}
 		};
 		register.addMouseListener(registerButtonListener);
-
+	
 	
 
 
@@ -313,9 +310,33 @@ public class ParkingBookingSystemClient implements ActionListener{
 		Login.setFocusPainted(false);
 		Login.setBackground(new java.awt.Color(214, 207, 202));
 		Login.setForeground(new java.awt.Color(129, 0, 1));
-		Login.addActionListener(this);
+//		Login.addActionListener(this);
 		c2.add(Login);
 
+		
+		MouseAdapter loginButtonListener = new MouseAdapter() {
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				super.mouseClicked(e);
+				user.login(tname2.getText(), tpass2.getText());
+			
+//				System.out.println(tname2.getText());
+//				System.out.println(tpass2.getText());
+				System.out.println(user.isLoggedIn());
+//				System.out.println(bg.getSelection().getActionCommand());
+				
+				if(user.isLoggedIn()) {
+					frame3.setVisible(true);
+					frame2.dispose();
+				}
+		
+		
+
+				
+			}
+		};
+		Login.addMouseListener(loginButtonListener);
 
 		/////////////////////////// FRAME 3 (SPOT SELECTION) ///////////////////////////////////////////
 
@@ -535,6 +556,8 @@ public class ParkingBookingSystemClient implements ActionListener{
 		bg5.add(Time5);
 		bg5.add(Time6);
 		bg5.add(Time7);
+		
+
 		Time1.setActionCommand("1");
 		Time2.setActionCommand("2"); 
 		Time3.setActionCommand("3"); 
@@ -543,16 +566,32 @@ public class ParkingBookingSystemClient implements ActionListener{
 		Time6.setActionCommand("6");
 		Time7.setActionCommand("7"); 
 
+
 		
-//		JToggleButton Time1 = new JToggleButton("1 Hour");
-//		JToggleButton Time7 = new JToggleButton("2 Hours"); 
-//		JToggleButton Time2 = new JToggleButton("3 Hours"); 
-//		JToggleButton Time3 = new JToggleButton("4 Hours"); 
-//		JToggleButton Time4 = new JToggleButton("5 Hours");
-//		JToggleButton Time5 = new JToggleButton("6 Hours"); 
-//		JToggleButton Time6 = new JToggleButton("7 Hours");
+		
+		MouseAdapter bookButtonListener = new MouseAdapter() {
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				super.mouseClicked(e);
+				user.login(tname2.getText(), tpass2.getText());
+			
+//				System.out.println(tname2.getText());
+//				System.out.println(tpass2.getText());
+//				System.out.println(user.getEmail());
+//				System.out.println(bg.getSelection().getActionCommand());
+				
+				
+				frame3.setVisible(true);
+				frame2.dispose();
+		
 
+				
+			}
+		};
+		Login.addMouseListener(loginButtonListener);
 
+		
 
 
 		/////////////////////////// FRAME 4 (Menu) ///////////////////////////////////////////
@@ -927,17 +966,15 @@ public class ParkingBookingSystemClient implements ActionListener{
 		student1.login("Abdalla", "AbdallaSSS128");
 		System.out.println(student1.isLoggedIn());
 
-		System.out.println(student1.getVerificationStatus());
-		System.out.println(student1.getRegistrationStatus());
+	
 
 		FacultyMember prof1 = new FacultyMember("mokhtar@eecs.ca", "Mokhtar", "Mokhtar128", "IA5CC3");
-		System.out.println(prof1.getVerificationStatus());
-		System.out.println(prof1.getRegistrationStatus());
+		
 		prof1.register();
-		System.out.println(prof1.getRegistrationStatus());
+		
 		manager.validateAccount(prof1);
 		prof1.login("Mokhtar", "Mokhtar128");
-		System.out.println(prof1.getVerificationStatus());
+		
 
 		manager.addParkingLot();
 
@@ -960,8 +997,8 @@ public class ParkingBookingSystemClient implements ActionListener{
 		// client chooses one 
 		// on event click then call client.bookParkingSpace
 		
-		Client student = clientFactory.createClient("bob@no.com","student", "123", "awxj049");
-		System.out.println(student.getName());
+		//Client student = clientFactory.createClient("123@no.com","student", "123", "awxj049");
+	//	System.out.println(student.getName());
 
 		ParkingLot parking = new ParkingLot();
 //		Sensor s = new Sensor();
