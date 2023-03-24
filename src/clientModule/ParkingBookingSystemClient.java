@@ -211,6 +211,7 @@ public class ParkingBookingSystemClient implements ActionListener{
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				super.mouseClicked(e);
+				Client client = new Client(tname.getText(), "129@gmail.com", tpass.getName());
 				System.out.println(tname.getText());
 				System.out.println(tpass.getText());
 				System.out.println(bg.getSelection().getActionCommand());
