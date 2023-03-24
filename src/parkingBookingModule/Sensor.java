@@ -1,12 +1,13 @@
 package parkingBookingModule;
 
+import helperModule.Subject;
+
 public class Sensor {
 
 	private boolean isVacant=true;
 	private String carLicensePlate;
-	private ParkingStateContext sensorStateContext;
-	private SensorParkingState sensorState = sensorStateContext.getState();
-	
+	private ParkingStateContext sensorStateContext = new ParkingStateContext();
+
 	
 	public void setCarLicensePlate(String licensePlate) {
 		
@@ -20,12 +21,14 @@ public class Sensor {
 
 	
 	public SensorParkingState getVacancy() {
-		return sensorState;
+		return sensorStateContext.getState();
 	}
 	
 
-	public void setVacancy(boolean vacancy) {
+	public void setVacancy(SensorParkingState vacancy) {
 		sensorStateContext.setState(vacancy);
 	
 	}
+
+
 }

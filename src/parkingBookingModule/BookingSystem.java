@@ -3,20 +3,13 @@ package parkingBookingModule;
 import java.util.ArrayList;
 
 import helperModule.Observer;
-import paymentModule.Credit;
-import paymentModule.Debit;
-import paymentModule.Mobile;
-import paymentModule.PaymentContext;
-import userModule.Client;
-import userModule.FacultyMember;
-import userModule.NonFacultyStaff;
-import userModule.Visitor;
-import userModule.Student;
+import paymentModule.*;
+import userModule.*;
 
 public class BookingSystem implements Observer {
 	private static ArrayList<ParkingLot> parkinglots = new ArrayList<ParkingLot>();
 	private ArrayList<ParkingSpace> availableSpaces = new ArrayList<ParkingSpace>();
-
+	private EmptyParkingState emptyState;
 	private Booking booking;
 	private static final BookingSystem bookingSystem = new BookingSystem();
 	
@@ -30,21 +23,7 @@ public class BookingSystem implements Observer {
 	}
 	
 	public ArrayList<ParkingSpace> getAvailableSpaces(){
-		
-		// this will likely be changed to observer and so will not be needed
-		// available spaces has all the available parking spaces at the time. 
-		// When the state of a parking space changes, the array of available spaces will need to be updated
-		
-		for(int i=0; i<parkinglots.size(); i++) {
-			ParkingLot currentlot = parkinglots.get(i);
-			ParkingSpace[] spaces = currentlot.getParkingSpaces();
-			for(int j=0; j<spaces.length; j++) {
-				if(spaces[i].isAvailable() == true) {
-					availableSpaces.add(spaces[i]);
-				}
-			}
-			}
-		
+
 		return availableSpaces;
 	}
 	
@@ -53,7 +32,7 @@ public class BookingSystem implements Observer {
 	
 	public void addParkingLot(ParkingLot parkingLot) {
 		ParkingSpace[] parkingSpaces = parkingLot.getParkingSpaces();
-		for(int i = 0; i< parkingSpaces.length; i++) {
+		for(int i = 0; i< parkingSpaces.length-1; i++) {
 			if(parkingSpaces[i].isAvailable()) {
 				availableSpaces.add(parkingSpaces[i]);
 			}
@@ -66,7 +45,7 @@ public class BookingSystem implements Observer {
 	}
 	
 	public Booking bookParkingSpace(Client user, ParkingSpace parkingSpace, int hoursRequested)throws IllegalArgumentException {
-		//to book a parking space:
+			//to book a parking space:
 			//client must be registered after logging in
 			//space must not be occupied
 			//space must not be booked by another client (user)
@@ -104,15 +83,18 @@ public class BookingSystem implements Observer {
 		
 		if(paymentMethod == "Mobile") {
 			PaymentContext pc = new PaymentContext(new Mobile(), user);
+			bookingInfo.getParkingSpace().getSensor().setVacancy(emptyState);
 			return pc.pay(price);
 		
 		}
 		else if(paymentMethod == "Credit") {
 			PaymentContext pc = new PaymentContext(new Credit(), user);
+			bookingInfo.getParkingSpace().getSensor().setVacancy(emptyState);
 			return pc.pay(price);
 		}
 		else if(paymentMethod == "Debit") {
 			PaymentContext pc = new PaymentContext(new Debit(), user);
+			bookingInfo.getParkingSpace().getSensor().setVacancy(emptyState);
 			return pc.pay(price);
 		}
 		
@@ -120,18 +102,11 @@ public class BookingSystem implements Observer {
 	
 	}
 	
-	
-	public Booking editBooking(Client user, ParkingSpace parkingSpace) {
-		
-		
-		return null;
-		
-	}
-	
 	public Booking cancelBooking(Client user, ParkingSpace parkingSpace) {
 		
 		return null;
 	}
+	
 	
 	public Booking extendParkingDuration(Client user, ParkingSpace parkingSpace) {
 		
@@ -144,7 +119,16 @@ public class BookingSystem implements Observer {
 	}
 
 	@Override
-	public void updateAvailableSpaces() {
+	public void updateAvailableSpaces(ParkingSpace parkingSpace) {
+		
+		if(parkingSpace.getSensor().getVacancy() instanceof OccupiedParkingState) {
+			availableSpaces.remove(parkingSpace);
+		}
+		else {
+			if(!availableSpaces.contains(parkingSpace)) {
+				availableSpaces.add(parkingSpace);
+			}
+		}
 		
 	}
 

@@ -1,15 +1,19 @@
 package parkingBookingModule;
 
+import helperModule.Subject;
 import userModule.Client;
 
-public class ParkingSpace {
+public class ParkingSpace implements Subject{
 	// IDref used to reference next parking space id
 	private static long IDref = 0;
 	private long spaceId;
 	private ParkingLot lot;
-	private boolean available = true;
+	private OccupiedParkingState occupiedState = new OccupiedParkingState();
+	private EmptyParkingState emptyState = new EmptyParkingState();
+	private MaintenanceParkingState maintenanceState = new MaintenanceParkingState();
 	private Sensor sensor;
-	private Booking booking;
+	// There is only one observer at the moment
+	private BookingSystem bookingSystem = BookingSystem.getInstance();
 
 	
 	
@@ -22,31 +26,30 @@ public class ParkingSpace {
 	
 	public boolean isAvailable() {
 		
-		return available && sensor.getVacancy();
+		if(sensor.getVacancy() instanceof EmptyParkingState) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 	
 	public void book(Client client, int hoursRequested) {
 		
+		sensor.setVacancy(occupiedState);
+		this.notifyObservers();
 		
-		sensor.setVacancy(false);
-		
 	}
 	
-	public Booking editBooking() {
-		//changes attributes in booking object
-		return booking;
+	public void cancelBooking() {
+		sensor.setVacancy(emptyState);
+		this.notifyObservers();
 	}
 	
-	public Booking cancelBooking() {
-		// deletes booking
-		return booking;
-	}
-	
-	public Booking extendBooking() {
+	public void extendBooking() {
 		// adds time to endDate 
 		// adds hours to hours booked
 		// booking.setenddate() need a setter for end date
-		return booking;
 	}
 	
 	public long getId() {
@@ -54,11 +57,11 @@ public class ParkingSpace {
 	}
 	
 	public void enableSpace() {
-		available = true;
+		sensor.setVacancy(emptyState);
 	}
 	
 	public void disableSpace() {
-		available = false;
+		sensor.setVacancy(maintenanceState);
 	}
 	
 	
@@ -76,6 +79,24 @@ public class ParkingSpace {
 	public void setSensor(Sensor sensor) {
 		
 		this.sensor = sensor;
+	}
+	
+	@Override
+	public void attach() {
+		// since there is only one observer at the moment, this method is not very neccasary
+		
+	}
+
+	@Override
+	public void detach() {
+		// since there is only one observer at the moment, this method is not very neccasary
+		
+	}
+
+	@Override
+	public void notifyObservers() {
+		bookingSystem.updateAvailableSpaces(this);
+		
 	}
 
 
