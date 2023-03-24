@@ -11,6 +11,7 @@ public class Booking {
 	private ParkingSpace parkingSpace;
 	private String licensePlate;
 	private int bookedHours;
+	private int extendHours;
 	
 	
 	public Booking(ParkingSpace parkingSpace, String licensePlate, int bookedHours) {
@@ -60,6 +61,14 @@ public class Booking {
 
 	public void setBookedHours(int bookedHours) {
 		this.bookedHours = bookedHours;
+	}
+	
+	public void cancelBooking() {
+		bookedHours = 1;
+	}
+	
+	public void extendBooking(int extendHours) {	
+		bookedHours = bookedHours + extendHours;
 	}
 
 }

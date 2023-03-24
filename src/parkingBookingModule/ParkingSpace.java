@@ -46,11 +46,7 @@ public class ParkingSpace implements Subject{
 		this.notifyObservers();
 	}
 	
-	public void extendBooking() {
-		// adds time to endDate 
-		// adds hours to hours booked
-		// booking.setenddate() need a setter for end date
-	}
+
 	
 	public long getId() {
 		return spaceId;

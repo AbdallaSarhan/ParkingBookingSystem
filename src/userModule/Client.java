@@ -106,7 +106,7 @@ public abstract class Client extends Account {
 	}
 	
 	public Booking cancelBooking(ParkingSpace parkingSpace) {
-		this.booking = bookingSystem.bookParkingSpace(this, null, 1);
+		//this.booking = bookingSystem.bookParkingSpace(this, null, 1);
 		return this.booking;
 	}
 	

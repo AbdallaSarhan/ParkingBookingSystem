@@ -101,15 +101,7 @@ public class BookingSystem implements Observer {
 	
 	}
 	
-	public void cancelBooking(Client user, ParkingSpace parkingSpace) {
-		
-	}
-	
-	
-	public Booking extendParkingDuration(Client user, ParkingSpace parkingSpace) {
-		
-		return null;
-	}
+
 	
 	public Booking getCarInfo() {
 		

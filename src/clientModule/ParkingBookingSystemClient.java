@@ -904,7 +904,7 @@ public class ParkingBookingSystemClient implements ActionListener{
 	public static void main(String[] args) {
 
 
-		new ParkingBookingSystemClient();
+		//new ParkingBookingSystemClient();
 
 
 		// Account constructor takes email then name then password..etc
@@ -968,6 +968,16 @@ public class ParkingBookingSystemClient implements ActionListener{
 //		ParkingSpace p = new ParkingSpace(parking, s);
 		
 		Booking booking = new Booking(null, null, 10);
+		System.out.println(booking.getBookedHours());
+		
+		
+		booking.cancelBooking();
+		System.out.println(booking.getBookedHours());
+
+		
+		booking.extendBooking(4);
+		System.out.println(booking.getBookedHours());
+
 		
 		//		ParkingSpace z = new ParkingSpace(parking, s);
 		//		ParkingSpace c = new ParkingSpace(parking, s);
