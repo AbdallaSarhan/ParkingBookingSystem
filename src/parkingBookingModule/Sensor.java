@@ -4,7 +4,6 @@ import helperModule.Subject;
 
 public class Sensor {
 
-	private boolean isVacant=true;
 	private String carLicensePlate;
 	private ParkingStateContext sensorStateContext = new ParkingStateContext();
 

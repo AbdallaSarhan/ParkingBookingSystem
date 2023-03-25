@@ -29,14 +29,16 @@ public class BookingSystem implements Observer {
 
 	
 	
-	public void addParkingLot(ParkingLot parkingLot) {
+	public ParkingLot addParkingLot(ParkingLot parkingLot) {
 		ParkingSpace[] parkingSpaces = parkingLot.getParkingSpaces();
 		for(int i = 0; i< parkingSpaces.length-1; i++) {
 			if(parkingSpaces[i].isAvailable()) {
 				availableSpaces.add(parkingSpaces[i]);
+				
 			}
 		}
 		this.parkinglots.add(parkingLot);
+		return parkingLot;
 	}
 	
 	public ArrayList<ParkingLot> getParkingLots(){
@@ -51,7 +53,7 @@ public class BookingSystem implements Observer {
 			//requires the cost of an hour (of the type of a client) as the deposit
 			//client must provide valid licence plate number
 		
-		if (user.isLoggedIn() && user.isRegistered() && parkingSpace.isAvailable() == true) {
+		if (user.isLoggedIn() && user.isRegistered() && parkingSpace.isAvailable()) {
 			parkingSpace.book(user, hoursRequested);
 		
 			return new Booking(parkingSpace, user.getLicensePlate(), hoursRequested);

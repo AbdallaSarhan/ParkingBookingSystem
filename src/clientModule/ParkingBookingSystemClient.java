@@ -22,6 +22,8 @@ import userModule.*;
 
 public class ParkingBookingSystemClient implements ActionListener{
 
+	
+	static int hoursBooked;
 
 	// Default
 	JFrame frame1 = new JFrame();
@@ -32,7 +34,7 @@ public class ParkingBookingSystemClient implements ActionListener{
 	JFrame frame6 = new JFrame();
 	JFrame frame7 = new JFrame();
 	JFrame frame8 = new JFrame();
-
+	
 
 	JButton register = new JButton("Register");
 	JButton Login = new JButton("Login");
@@ -41,7 +43,6 @@ public class ParkingBookingSystemClient implements ActionListener{
 	JButton Pay2 = new JButton("Choose Payment type");
 	JButton Pay = new JButton("Pay");
 	JButton Cancel = new JButton("Cancel");
-	JButton Cancel2 = new JButton("Cancel");
 	JButton Choose = new JButton("Choose Extended hours");
 
 
@@ -77,7 +78,6 @@ public class ParkingBookingSystemClient implements ActionListener{
 	JToggleButton Spot5;
 	JToggleButton Spot6;
 	Client user;
-	int hoursBooked = 0;
 
 	SuperManager superManager = SuperManager.getInstance();
 	Manager manager = superManager.createManagementAccount("manager@gmail.com", "manager", "manager");
@@ -531,8 +531,6 @@ public class ParkingBookingSystemClient implements ActionListener{
 		Time7.addActionListener(this);
 		c3.add(Time7);
 
-
-
 		// book button
 		Book.setFont(new Font("Arial", Font.PLAIN, 15));
 		Book.setBounds(290, 450, 300, 50);
@@ -567,8 +565,6 @@ public class ParkingBookingSystemClient implements ActionListener{
 		bg5.add(Time5);
 		bg5.add(Time6);
 		bg5.add(Time7);
-		
-
 		Time1.setActionCommand("1");
 		Time2.setActionCommand("2"); 
 		Time3.setActionCommand("3"); 
@@ -590,10 +586,7 @@ public class ParkingBookingSystemClient implements ActionListener{
 				hoursBooked = userBooking.getBookedHours();
 				System.out.println(bookingSystem.getAvailableSpaces().size());
 //				System.out.println(user.getEmail());
-//				System.out.println(bg.getSelection().getActionCommand());
-				
-	
-			
+//				System.out.println(bg.getSelection().getActionCommand());	
 //				frame3.setVisible(true);
 //				frame2.dispose();
 //		
@@ -624,8 +617,7 @@ public class ParkingBookingSystemClient implements ActionListener{
 		title4.setBackground(Color.red);
 		c4.add(title4);
 
-//		JLabel Price = new JLabel("You have booked Spot D2 for "+ hoursBooked +  " , you will be charged $40");
-		JLabel Price = new JLabel("You have booked Spot D2 for "+ hoursBooked +  " , you will be charged $40");
+		JLabel Price = new JLabel("You have booked Spot D2 for "+ hoursBooked +" hours, you will be charged $40");
 		
 		Price.setFont(new Font("Arial", Font.ITALIC, 25));
 		Price.setSize(730, 30);
@@ -968,12 +960,18 @@ public class ParkingBookingSystemClient implements ActionListener{
 	public static void main(String[] args) {
 
 
+
+
+
+	
+		//this is GUI
 		new ParkingBookingSystemClient();
+		
+		// Singleton
+		BookingSystem bookingSystem = BookingSystem.getInstance();
+		// Using Factory to create applicable user based on input
+		Client student = clientFactory.createClient("Student","123@no.com","student", "123", "awxj049");
 
-
-		// Account constructor takes email then name then password..etc
-		// This is to make sure that you can check name and password correctly when logging in
-		Student student1 = new Student("abdalla1@my.yorku.ca", "Abdalla", "AbdallaSSS128", "AB7C43");
 		SuperManager superManager = SuperManager.getInstance();
 		Manager manager = superManager.createManagementAccount("testManager@gmail.com", "manager1", "manager128");
 
@@ -984,108 +982,71 @@ public class ParkingBookingSystemClient implements ActionListener{
 		System.out.println(manager.getTeam());
 
 		// student must register before they can be verified
-		student1.register();
+		student.register();
 		// All fields must not be blank to be verified
-		manager.validateAccount(student1);
-		System.out.println(student1.isLoggedIn());
-		student1.login("Abdalla", "AbdallaSSS128");
-		System.out.println(student1.isLoggedIn());
+		manager.validateAccount(student);
+		System.out.println(student.isLoggedIn());
+		student.login("student", "123");
+		System.out.println(student.isLoggedIn());
 
 	
 
-		FacultyMember prof1 = new FacultyMember("mokhtar@eecs.ca", "Mokhtar", "Mokhtar128", "IA5CC3");
 		
+		Client prof1 = clientFactory.createClient("Faculty Member","mokhtar@eecs.ca","Mokhtar", "Mokhtar1", "awxj049");
 		prof1.register();
 		
 		manager.validateAccount(prof1);
-		prof1.login("Mokhtar", "Mokhtar128");
+		prof1.login("Mokhtar", "Mokhtar1");
 		
 
-		manager.addParkingLot();
-
-
+		ParkingLot parkingLot = manager.addParkingLot();
+		
+		
+		
 		// display these spaces in GUI
-		System.out.println(student1.getAvailableSpaces());
+		System.out.println(student.getAvailableSpaces());
 
 		
 		//student1.bookParkingSpace(student1.getAvailableSpaces().get(0), 10);
 		//System.out.println(prof1.getAvailableSpaces().size());
-		prof1.bookParkingSpace(prof1.getAvailableSpaces().get(1), 10);
+	
+		prof1.bookParkingSpace(prof1.getAvailableSpaces().get(4), 9);
+		
+	
 		
 		
 	
 		
-//		prof1.bookParkingSpace(prof1.getAvailableSpaces().get(1), 10);
+
 		
-	//	System.out.println(prof1.pay("Debit"));
+		System.out.println(prof1.pay("Debit"));
+		
+
 	
 		// client chooses one 
 		// on event click then call client.bookParkingSpace
 		
-		//Client student = clientFactory.createClient("123@no.com","student", "123", "awxj049");
-	//	System.out.println(student.getName());
-
-		ParkingLot parking = new ParkingLot();
-//		Sensor s = new Sensor();
-//		ParkingSpace p = new ParkingSpace(parking, s);
 		
-		Booking booking = new Booking(null, null, 10);
-		System.out.println(booking.getBookedHours());
+		student.bookParkingSpace(bookingSystem.getAvailableSpaces().get(0), 10);
+		System.out.println(student.pay("Credit"));
 		
+		System.out.println(student.getBookedHours());
+
+		student.extendBooking(4);
+		System.out.println(student.getBookedHours());
 		
-//		booking.cancelBooking();
-//		System.out.println(booking.getBookedHours());
-//
-//		
-//		booking.extendBooking(4);
-//		System.out.println(booking.getBookedHours());
+		student.cancelBooking();
+		System.out.println(student.getBookedHours());
+	
+		manager.disableParkingLot(parkingLot);
+		
+		// unable to book because lot is disabled (throws exception)
+		student.bookParkingSpace(bookingSystem.getAvailableSpaces().get(0), 10);
+		
+
+
 
 		
-		//		ParkingSpace z = new ParkingSpace(parking, s);
-		//		ParkingSpace c = new ParkingSpace(parking, s);
-		//		ParkingSpace d = new ParkingSpace(parking, s);
-		//		ParkingSpace e = new ParkingSpace(parking, s);
-		//		ParkingSpace f = new ParkingSpace(parking, s);
-		//		ParkingSpace g = new ParkingSpace(parking, s);
-		//		
-		//		ParkingSpace h = new ParkingSpace(parking, s);
-		//		ParkingSpace i = new ParkingSpace(parking, s);
-		//	
-		//
-		//		
-		//		ParkingSpace[] spaces = parking.getParkingSpaces();
-		//        parkingLot has an array of 100 null spaces
-		//		System.out.println(spaces);
-		//		
-		//		BookingSystem b = new BookingSystem();
-		//		Management m = new Management("test@gmail.com", "gunther", "123p");
-		//		m.enableParkingLot(parking);
-		//		System.out.println(parking.getStatus());
-		//		m.disableParkingLot(parking);
-		//		System.out.println(parking.getStatus());
-		//		m.enableParkingSpace(p);
-		//		System.out.println(p.getAvailability());
-		//		m.disableParkingSpace(p);
-		//		System.out.println(p.getAvailability());
-		//		m.addParkingLot(parking);
-		//		System.out.println(b.getParkingLots());
-
-
-
-
-
-		//				ParkingSpace parkspace = new ParkingSpace(null, null);
-		//				Booking booking = new Booking(parkspace , "BHCG167", 4);
-		//
-		//				System.out.println(booking.getStartDate());
-
-		//		System.out.println(p.getId());
-		//		System.out.println(c.getId());
-		//		System.out.println(d.getId());
-		//		System.out.println(e.getId());
-		//		System.out.println(f.getId());
-		//	
-
 
 	}
 }
