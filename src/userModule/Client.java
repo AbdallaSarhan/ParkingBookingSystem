@@ -14,7 +14,7 @@ public abstract class Client extends Account {
 	private Booking booking;
 	protected boolean isRegistered = false;
 	protected boolean isVerified = false;
-//	protected boolean loggedIn = false;
+
 	
 	
 	public Client(String name, String email, String password, String licensePlate) {

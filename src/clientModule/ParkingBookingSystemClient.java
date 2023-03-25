@@ -603,8 +603,6 @@ public class ParkingBookingSystemClient implements ActionListener{
 		};
 		Book.addMouseListener(bookButtonListener);
 
-		
-	
 
 		/////////////////////////// FRAME 4 (Menu) ///////////////////////////////////////////
 		frame4.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -809,6 +807,19 @@ public class ParkingBookingSystemClient implements ActionListener{
 		credit.setActionCommand("Credit");
 		debit.setActionCommand("Debit"); 
 		mobile.setActionCommand("Mobile"); 
+		
+		MouseAdapter payButtonListener = new MouseAdapter() {
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				super.mouseClicked(e);
+				System.out.println(user.pay(bg3.getSelection().getActionCommand()));
+//				System.out.println(message);
+				
+		
+			}
+		};
+		Pay2.addMouseListener(payButtonListener);
 
 
 		/////////////////////////// FRAME 7 (Choose extension) ///////////////////////////////////////////
@@ -957,7 +968,7 @@ public class ParkingBookingSystemClient implements ActionListener{
 	public static void main(String[] args) {
 
 
-		//new ParkingBookingSystemClient();
+		new ParkingBookingSystemClient();
 
 
 		// Account constructor takes email then name then password..etc
@@ -1022,12 +1033,12 @@ public class ParkingBookingSystemClient implements ActionListener{
 		System.out.println(booking.getBookedHours());
 		
 		
-		booking.cancelBooking();
-		System.out.println(booking.getBookedHours());
-
-		
-		booking.extendBooking(4);
-		System.out.println(booking.getBookedHours());
+//		booking.cancelBooking();
+//		System.out.println(booking.getBookedHours());
+//
+//		
+//		booking.extendBooking(4);
+//		System.out.println(booking.getBookedHours());
 
 		
 		//		ParkingSpace z = new ParkingSpace(parking, s);
