@@ -15,7 +15,9 @@ public abstract class Client extends Account {
 	protected boolean isRegistered = false;
 	protected boolean isVerified = false;
 //	protected boolean loggedIn = false;
-	
+	private int bookedHours;
+	private int extendHours;
+
 	
 	public Client(String name, String email, String password, String licensePlate) {
 		super(name, email, password);
@@ -100,20 +102,22 @@ public abstract class Client extends Account {
 		return bookingSystem.payForBooking(this, this.booking, paymentMethod);
 	}
 	
-	
-	public Booking editBooking(ParkingSpace parkingSpace) {
-		
-		return null;
+
+
+	public int getBookedHours() {
+		return this.booking.getBookedHours();
 	}
+
+
 	
-	public Booking cancelBooking(ParkingSpace parkingSpace) {
-		//this.booking = bookingSystem.bookParkingSpace(this, null, 1);
-		return this.booking;
-	}
-	
-	public Booking extendBooking(ParkingSpace parkingSpace) {
+	public void extendBooking(int extendHours) {	
 		
-		return null;
+		this.booking.setBookedHours(booking.getBookedHours()+extendHours);
+	}
+
+	
+	public void cancelBooking() {
+		this.booking.setBookedHours(1);
 	}
 	
 	

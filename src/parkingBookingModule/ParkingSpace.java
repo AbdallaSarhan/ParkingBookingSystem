@@ -36,8 +36,15 @@ public class ParkingSpace implements Subject{
 	
 	public void book(Client client, int hoursRequested) {
 		
-		sensor.setVacancy(occupiedState);
-		this.notifyObservers();
+		if(this.isAvailable()){
+			sensor.setVacancy(occupiedState);
+			this.notifyObservers();
+		}
+		else {
+			System.out.println("You can't book");
+		}
+		
+	
 		
 	}
 	

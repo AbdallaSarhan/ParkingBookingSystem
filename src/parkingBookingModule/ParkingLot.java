@@ -27,6 +27,12 @@ public class ParkingLot {
 	public void enableLot() {
 		
 		this.isOpen = true;
+	
+		for(int i =0; i<spaces.length-1; i++) {
+			
+			spaces[i].enableSpace();
+			
+		}
 	}
 	
 	public String getLotId() {
@@ -36,6 +42,11 @@ public class ParkingLot {
 	
 	public void disableLot() {
 		this.isOpen = false;
+		for(int i =0; i<spaces.length-1; i++) {
+			
+			spaces[i].disableSpace();
+			
+		}
 	}
 	
 	public boolean getStatus() {

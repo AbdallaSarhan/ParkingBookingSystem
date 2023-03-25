@@ -11,13 +11,14 @@ public class Booking {
 	private ParkingSpace parkingSpace;
 	private String licensePlate;
 	private int bookedHours;
-	private int extendHours;
+
 	
 	
 	public Booking(ParkingSpace parkingSpace, String licensePlate, int bookedHours) {
 		this.parkingSpace = parkingSpace;
 		this.licensePlate = licensePlate;
 		this.bookedHours = bookedHours;
+		
 		
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
 		LocalDateTime now = LocalDateTime.now();  
@@ -54,21 +55,25 @@ public class Booking {
 	public int getId() {
 		return id;
 	}
-
+	
 	public int getBookedHours() {
 		return bookedHours;
 	}
 
+
+	
 	public void setBookedHours(int bookedHours) {
 		this.bookedHours = bookedHours;
 	}
+	public void extendBooking(int extendHours) {	
+		bookedHours = bookedHours + extendHours;
+	}
+
 	
 	public void cancelBooking() {
 		bookedHours = 1;
 	}
-	
-	public void extendBooking(int extendHours) {	
-		bookedHours = bookedHours + extendHours;
-	}
+
+
 
 }
