@@ -1007,7 +1007,7 @@ public class ParkingBookingSystemClient implements ActionListener{
 		System.out.println(student.getAvailableSpaces());
 
 		
-		//student1.bookParkingSpace(student1.getAvailableSpaces().get(0), 10);
+//		student1.bookParkingSpace(student1.getAvailableSpaces().get(0), 10);
 		//System.out.println(prof1.getAvailableSpaces().size());
 	
 		prof1.bookParkingSpace(prof1.getAvailableSpaces().get(4), 9);

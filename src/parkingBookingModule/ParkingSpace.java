@@ -34,6 +34,7 @@ public class ParkingSpace implements Subject{
 		}
 	}
 	
+	
 	public void book(Client client, int hoursRequested) {
 		
 		if(this.isAvailable()){
@@ -61,10 +62,12 @@ public class ParkingSpace implements Subject{
 	
 	public void enableSpace() {
 		sensor.setVacancy(emptyState);
+		this.notifyObservers();
 	}
 	
 	public void disableSpace() {
 		sensor.setVacancy(maintenanceState);
+		this.notifyObservers();
 	}
 	
 	

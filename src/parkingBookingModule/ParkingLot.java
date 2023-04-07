@@ -24,6 +24,7 @@ public class ParkingLot {
 		return spaces;
 	}
 	
+	
 	public void enableLot() {
 		
 		this.isOpen = true;

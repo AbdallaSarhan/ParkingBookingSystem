@@ -26,6 +26,7 @@ public class BookingSystem implements Observer {
 		return availableSpaces;
 	}
 	
+	
 
 	
 	
@@ -113,7 +114,7 @@ public class BookingSystem implements Observer {
 	@Override
 	public void updateAvailableSpaces(ParkingSpace parkingSpace) {
 		
-		if(parkingSpace.getSensor().getVacancy() instanceof OccupiedParkingState) {
+		if(parkingSpace.getSensor().getVacancy() instanceof OccupiedParkingState || parkingSpace.getSensor().getVacancy() instanceof MaintenanceParkingState) {
 			availableSpaces.remove(parkingSpace);
 		}
 		else {
